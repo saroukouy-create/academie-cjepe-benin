@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Académie CJEPE-BENIN · Parcours interactifs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <div class="brand" onclick="go('home')">
+      <div class="brand-mark">C</div>
+      <div class="brand-txt"><b>Académie CJEPE-BENIN</b><span>Cotonou · Formation professionnelle</span></div>
+    </div>
+    <div class="track-tabs" id="trackTabs"></div>
+    <div class="topbar-actions">
+      <div class="search-box">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="searchInput" placeholder="Rechercher une leçon…" oninput="onSearch(this.value)" />
+      </div>
+      <button class="icon-btn menu-btn" onclick="toggleMobileSidebar()" aria-label="Menu" title="Sommaire">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <button class="icon-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Changer le thème" title="Changer le thème">☾</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="scrim" id="scrim" onclick="toggleMobileSidebar()"></div>
+    <nav class="sidebar sidebar-hidden" id="sidebar"></nav>
+    <main class="content"><div class="content-inner" id="contentInner"></div></main>
+  </div>
+</div>
+  <script src="script.js" defer></script>
+</body>
+</html>

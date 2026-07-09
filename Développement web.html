@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CJEPE · Développeur Web · Programme complet</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ========== STYLES GLOBAUX ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #eef3f9;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .program-container {
+      max-width: 1400px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 48px;
+      padding: 2.8rem 3rem;
+      box-shadow: 0 30px 60px -18px rgba(0, 20, 40, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #1a2f47;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0b1c2f;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header h1 i {
+      color: #c9a84b;
+    }
+
+    .header .badge {
+      background: #1a2f47;
+      color: white;
+      padding: 0.3rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .subhead {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      color: #1f3f61;
+      font-size: 1.05rem;
+      gap: 0.5rem 1rem;
+    }
+
+    .subhead i {
+      color: #c9a84b;
+    }
+
+    .subhead .pill {
+      background: #eaf0f9;
+      padding: 0.2rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    /* ========== PRÉAMBULE : ANALOGIE DE LA MAISON ========== */
+    .preamble {
+      background: linear-gradient(135deg, #f7faff 0%, #eaf2fb 100%);
+      border-radius: 32px;
+      padding: 2rem 2.4rem;
+      margin-bottom: 2.5rem;
+      border-left: 8px solid #c9a84b;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+
+    .preamble .icon-house {
+      font-size: 2.8rem;
+      color: #c9a84b;
+      margin-bottom: 0.5rem;
+    }
+
+    .preamble h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0b1c2f;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .preamble h2 i {
+      color: #c9a84b;
+    }
+
+    .preamble .analogie {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #1a3450;
+    }
+
+    .preamble .analogie strong {
+      color: #0b1c2f;
+    }
+
+    .preamble .analogie .highlight {
+      background: #c9a84b20;
+      padding: 0.1rem 0.4rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .preamble .tech-defs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .preamble .tech-def {
+      background: white;
+      border-radius: 20px;
+      padding: 1rem 1.4rem;
+      border: 1px solid #e0eaf5;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .preamble .tech-def h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0b1c2f;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 0.3rem;
+    }
+
+    .preamble .tech-def h3 i {
+      color: #c9a84b;
+    }
+
+    .preamble .tech-def p {
+      font-size: 0.95rem;
+      color: #1f3f61;
+      line-height: 1.5;
+    }
+
+    .preamble .tech-def .role {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #c9a84b;
+      background: #f0f6fe;
+      display: inline-block;
+      padding: 0.1rem 0.8rem;
+      border-radius: 30px;
+      margin-top: 0.2rem;
+    }
+
+    /* ========== INTRODUCTION DÉBUTANT ========== */
+    .intro-beginner {
+      background: #f2f8ff;
+      border-left: 6px solid #c9a84b;
+      border-radius: 20px;
+      padding: 1.2rem 2rem;
+      margin-bottom: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 2rem;
+    }
+
+    .intro-beginner i {
+      color: #c9a84b;
+      font-size: 1.8rem;
+    }
+
+    .intro-beginner p {
+      color: #0b1c2f;
+      font-weight: 400;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .intro-beginner .highlight {
+      background: #1a2f47;
+      color: white;
+      padding: 0.2rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    /* ========== GRILLE DES MODULES ========== */
+    .module-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .module-card {
+      background: #f9fcff;
+      border-radius: 32px;
+      padding: 1.8rem 2.2rem;
+      border: 1px solid #e6edf6;
+      transition: 0.1s ease;
+    }
+
+    .module-card:hover {
+      border-color: #c9d9eb;
+      background: #fafdff;
+    }
+
+    .module-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid #dce6f2;
+      padding-bottom: 0.7rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .module-title h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #0a1f33;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .module-title h2 i {
+      color: #c9a84b;
+      font-size: 1.6rem;
+    }
+
+    .module-coeff {
+      background: #eaf1fa;
+      padding: 0.2rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #1e3c5e;
+    }
+
+    .module-desc {
+      color: #1f3f61;
+      font-size: 0.98rem;
+      margin-bottom: 1rem;
+      background: #f0f6fe;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      display: inline-block;
+    }
+
+    .module-desc i {
+      color: #c9a84b;
+      margin-right: 6px;
+    }
+
+    /* ========== GRILLE DES CONCEPTS ========== */
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .concept-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid #eef3fa;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+      transition: 0.1s ease;
+    }
+
+    .concept-card:hover {
+      border-color: #c5d7eb;
+    }
+
+    .concept-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1d334b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px dashed #d9e3ef;
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .concept-card h3 i {
+      color: #c9a84b;
+      font-size: 0.9rem;
+    }
+
+    .concept-card .def {
+      font-size: 0.92rem;
+      color: #1b334d;
+      line-height: 1.5;
+      margin-bottom: 0.3rem;
+    }
+
+    .concept-card .def i {
+      color: #2d5a7a;
+      margin-right: 4px;
+    }
+
+    .concept-card .exemple {
+      font-size: 0.85rem;
+      color: #2d4a6b;
+      background: #f0f6fe;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 0.3rem;
+      border-left: 3px solid #c9a84b;
+    }
+
+    .concept-card .exemple i {
+      color: #c9a84b;
+      margin-right: 4px;
+    }
+
+    /* ========== LIVRABLE & ÉVALUATION ========== */
+    .livrable {
+      background: #eaf2fb;
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem 0.3rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #10304b;
+      border: 1px solid #d1ddec;
+      margin-top: 0.8rem;
+    }
+
+    .livrable i {
+      color: #b8860b;
+    }
+
+    .evaluation {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ecf3fa;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1a3957;
+      margin-left: 0.8rem;
+    }
+
+    .evaluation i {
+      color: #c9a84b;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer-meta {
+      margin-top: 3rem;
+      border-top: 1px solid #dce6f2;
+      padding-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-meta .note {
+      color: #2e4a6b;
+      font-style: italic;
+    }
+
+    .footer-meta .note i {
+      color: #c9a84b;
+    }
+
+    .badge-coeff-final {
+      background: #1a2f47;
+      color: white;
+      border-radius: 40px;
+      padding: 0.3rem 1.4rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 750px) {
+      .program-container {
+        padding: 1.5rem;
+      }
+      .module-card {
+        padding: 1.2rem;
+      }
+      .concepts-grid {
+        grid-template-columns: 1fr;
+      }
+      .header h1 {
+        font-size: 1.8rem;
+      }
+      .intro-beginner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .preamble {
+        padding: 1.5rem;
+      }
+      .preamble .tech-defs {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .inline-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 16px;
+    }
+
+    .pill-sm {
+      background: #dce6f2;
+      padding: 0.1rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #1a2f47;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="program-container">
+
+    <!-- ============================================================ -->
+    <!-- ===================== HEADER ================================ -->
+    <!-- ============================================================ -->
+    <header class="header">
+      <h1><i class="fas fa-graduation-cap"></i> Programme · Développeur Web</h1>
+      <span class="badge"><i class="fas fa-calendar-alt"></i> 7 mois · 4 modules</span>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- ================ SOUS-EN-TÊTE =============================== -->
+    <!-- ============================================================ -->
+    <div class="subhead">
+      <span><i class="fas fa-flag-checkered"></i> Parcours complet — débutant absolu</span>
+      <span class="pill"><i class="fas fa-code"></i> HTML · CSS · JS · React · Node · Flutter · Figma</span>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ================ PRÉAMBULE : LA MAISON DU WEB =============== -->
+    <!-- ============================================================ -->
+    <div class="preamble">
+      <div class="icon-house"><i class="fas fa-home"></i></div>
+      <h2><i class="fas fa-lightbulb"></i> Comprendre le web comme une maison</h2>
+
+      <div class="analogie">
+        <p>
+          <strong>Construire un site web, c'est comme construire une maison.</strong>
+          Avant de poser la première brique, il faut comprendre les rôles de chaque élément.
+          C'est ce que nous allons faire ensemble dans ce préambule.
+        </p>
+        <p style="margin-top: 0.6rem;">
+          <span class="highlight">🏗️ Les fondations</span> : c'est le sol sur lequel tout repose. Sans fondations solides, la maison s'effondre.
+          En développement web, les fondations sont les <strong>langages de base</strong> qui structurent, habillent et animent le contenu.
+          Ces trois langages sont <strong>HTML</strong>, <strong>CSS</strong> et <strong>JavaScript</strong>.
+          Ils travaillent ensemble comme une équipe de construction.
+        </p>
+      </div>
+
+      <!-- Définitions avec analogie -->
+      <div class="tech-defs">
+        <div class="tech-def">
+          <h3><i class="fas fa-code"></i> HTML</h3>
+          <p><strong>HyperText Markup Language</strong></p>
+          <p style="margin-top: 0.3rem; font-size: 0.95rem;">
+            C'est le <strong>squelette</strong> de la maison. Il définit les murs, les pièces, les portes et les fenêtres.
+            Sans HTML, il n'y a pas de structure, juste un terrain vide.
+          </p>
+          <span class="role"><i class="fas fa-tools"></i> Rôle : Structure</span>
+        </div>
+
+        <div class="tech-def">
+          <h3><i class="fas fa-paint-brush"></i> CSS</h3>
+          <p><strong>Cascading Style Sheets</strong></p>
+          <p style="margin-top: 0.3rem; font-size: 0.95rem;">
+            C'est la <strong>décoration</strong> et l'<strong>aménagement intérieur</strong>.
+            Il donne les couleurs, les textures, la disposition des meubles, et rend la maison agréable à vivre.
+            Sans CSS, la maison est fonctionnelle mais nue et sans style.
+          </p>
+          <span class="role"><i class="fas fa-tools"></i> Rôle : Présentation</span>
+        </div>
+
+        <div class="tech-def">
+          <h3><i class="fas fa-bolt"></i> JavaScript</h3>
+          <p><strong>JavaScript (JS)</strong></p>
+          <p style="margin-top: 0.3rem; font-size: 0.95rem;">
+            C'est l'<strong>électricité</strong> et la <strong>plomberie</strong> de la maison.
+            Il rend tout interactif : les interrupteurs allument les lumières, les robinets coulent, les portes s'ouvrent.
+            Sans JavaScript, la maison est statique et inerte.
+          </p>
+          <span class="role"><i class="fas fa-tools"></i> Rôle : Interactivité</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.2rem; background: #ffffff; border-radius: 20px; padding: 1rem 1.5rem; border: 1px solid #dce6f2;">
+        <p style="font-size: 1rem; color: #0b1c2f;">
+          <i class="fas fa-arrow-right" style="color: #c9a84b; margin-right: 8px;"></i>
+          <strong>En résumé :</strong>
+          <span style="background: #eaf2fb; padding: 0.1rem 0.8rem; border-radius: 30px;">HTML</span> construit les murs,
+          <span style="background: #eaf2fb; padding: 0.1rem 0.8rem; border-radius: 30px;">CSS</span> les peint et les meuble,
+          <span style="background: #eaf2fb; padding: 0.1rem 0.8rem; border-radius: 30px;">JavaScript</span> les rend vivants.
+          Ensemble, ils forment une <strong>maison numérique</strong> fonctionnelle et agréable.
+        </p>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ================ INTRODUCTION DÉBUTANT ===================== -->
+    <!-- ============================================================ -->
+    <div class="intro-beginner">
+      <i class="fas fa-graduation-cap"></i>
+      <p>
+        <strong>Maintenant que vous comprenez les bases,</strong> chaque concept sera expliqué simplement,
+        avec des exemples concrets. Aucune connaissance technique n'est requise.
+      </p>
+      <span class="highlight"><i class="fas fa-heart" style="color: #c9a84b; margin-right: 6px;"></i> Débutant bienvenu</span>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ================ GRILLE DES MODULES ======================== -->
+    <!-- ============================================================ -->
+    <div class="module-grid">
+
+      <!-- ========== MODULE 1 : FONDATIONS WEB ========== -->
+      <section class="module-card">
+        <div class="module-title">
+          <h2><i class="fas fa-layer-group"></i> Module 1 · Fondations Web</h2>
+          <span class="module-coeff"><i class="fas fa-star"></i> coeff. 1</span>
+        </div>
+        <div class="module-desc">
+          <i class="fas fa-info-circle"></i> Les bases absolues : comprendre comment fonctionne un site web, de zéro.
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin-bottom: 0.6rem;">
+          <span><i class="fas fa-code" style="color: #c9a84b;"></i> HTML, CSS, JavaScript, Git</span>
+          <span><i class="fas fa-clock"></i> Semaines 1 à 3</span>
+          <span class="pill-sm"><i class="fas fa-check-circle"></i> Aucun prérequis</span>
+        </div>
+
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <h3><i class="fas fa-code"></i> HTML</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Le squelette d'une page web. C'est le langage qui donne la structure : titres, paragraphes, images, liens...</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : <code>&lt;h1&gt;Bonjour&lt;/h1&gt;</code> crée un grand titre.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-paint-brush"></i> CSS</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Le style et la mise en page. C'est ce qui rend une page belle : couleurs, polices, marges, disposition.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : <code>color: blue;</code> rend le texte bleu.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-bolt"></i> JavaScript</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Le langage qui rend une page interactive. Il permet de réagir aux clics, de modifier le contenu, de faire des calculs...</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : <code>alert('Bonjour !')</code> affiche une fenêtre pop-up.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-code-branch"></i> Git</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Un outil qui sauvegarde l'historique de votre code. Comme une machine à remonter le temps pour vos fichiers.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : <code>git commit</code> enregistre une version de votre travail.</div>
+          </div>
+        </div>
+
+        <div class="inline-flex" style="margin-top: 0.8rem;">
+          <span class="livrable"><i class="fas fa-book"></i> Livrable : site vitrine responsive versionné</span>
+          <span class="evaluation"><i class="fas fa-check-circle"></i> Évaluation : projet + quiz (coeff.1)</span>
+        </div>
+      </section>
+
+      <!-- ========== MODULE 2 : FRONT-END AVANCÉ ========== -->
+      <section class="module-card">
+        <div class="module-title">
+          <h2><i class="fas fa-palette"></i> Module 2 · Front-End avancé</h2>
+          <span class="module-coeff"><i class="fas fa-star"></i> coeff. 2</span>
+        </div>
+        <div class="module-desc">
+          <i class="fas fa-info-circle"></i> Construire des interfaces modernes et dynamiques avec des frameworks professionnels.
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin-bottom: 0.6rem;">
+          <span><i class="fab fa-react"></i> React, Angular, API</span>
+          <span><i class="fas fa-clock"></i> Semaines 4 à 6</span>
+          <span class="pill-sm"><i class="fas fa-check-circle"></i> Prérequis : bases HTML/CSS/JS</span>
+        </div>
+
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <h3><i class="fab fa-react"></i> React</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Un framework JavaScript qui permet de construire des interfaces utilisateur réactives. Il découpe l'écran en "composants" réutilisables.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : un bouton "J'aime" qui change de couleur lorsqu'on clique dessus.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fab fa-angular"></i> Angular</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Un autre framework (complet) pour créer des applications web. Il utilise TypeScript et structure le code en composants et services.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : une application de gestion de tâches avec des listes dynamiques.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-plug"></i> API REST</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Un point d'accès à des données distantes. C'est comme un serveur qui livre des informations sur demande (météo, actualités...).</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : <code>fetch('https://api.meteo.fr')</code> récupère la météo.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-lock"></i> Authentification</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Le système qui permet à un utilisateur de se connecter avec un email et un mot de passe, et de gérer sa session.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : un formulaire de connexion avec un bouton "Se connecter".</div>
+          </div>
+        </div>
+
+        <div class="inline-flex" style="margin-top: 0.8rem;">
+          <span class="livrable"><i class="fas fa-book"></i> Livrable : application front-end connectée à une API</span>
+          <span class="evaluation"><i class="fas fa-check-circle"></i> Projet complet (coeff.2)</span>
+        </div>
+      </section>
+
+      <!-- ========== MODULE 3 : BACK-END & BDD ========== -->
+      <section class="module-card">
+        <div class="module-title">
+          <h2><i class="fas fa-server"></i> Module 3 · Back-End & BDD</h2>
+          <span class="module-coeff"><i class="fas fa-star"></i> coeff. 2</span>
+        </div>
+        <div class="module-desc">
+          <i class="fas fa-info-circle"></i> Apprendre à créer des serveurs, des bases de données et des API.
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin-bottom: 0.6rem;">
+          <span><i class="fas fa-database"></i> Node.js, PHP, MySQL, MongoDB</span>
+          <span><i class="fas fa-clock"></i> Semaines 7 à 9</span>
+          <span class="pill-sm"><i class="fas fa-check-circle"></i> Prérequis : bases JavaScript</span>
+        </div>
+
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <h3><i class="fab fa-node-js"></i> Node.js</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Un environnement qui permet d'exécuter JavaScript sur un serveur. C'est le "moteur" qui fait tourner le code côté serveur.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : un serveur qui renvoie "Bonjour" quand on visite une URL.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fab fa-php"></i> PHP</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Un langage de programmation côté serveur, très utilisé pour créer des sites dynamiques. Il génère du HTML à la volée.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : <code>&lt;?php echo 'Bonjour'; ?&gt;</code> affiche "Bonjour" sur la page.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-database"></i> MySQL</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Une base de données relationnelle. Elle stocke les données dans des tables structurées (comme un tableur avec des colonnes).</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : une table "utilisateurs" avec les colonnes "id", "nom", "email".</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-database"></i> MongoDB</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Une base de données NoSQL qui stocke les données sous forme de documents JSON. Plus flexible qu'une base relationnelle.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : <code>{ "nom": "Jean", "age": 30 }</code> est un document.</div>
+          </div>
+        </div>
+
+        <div class="inline-flex" style="margin-top: 0.8rem;">
+          <span class="livrable"><i class="fas fa-book"></i> Livrable : API REST sécurisée + documentation</span>
+          <span class="evaluation"><i class="fas fa-check-circle"></i> Évaluation : API + BDD (coeff.2)</span>
+        </div>
+      </section>
+
+      <!-- ========== MODULE 4 : MOBILE & WEB DESIGN ========== -->
+      <section class="module-card">
+        <div class="module-title">
+          <h2><i class="fas fa-mobile-alt"></i> Module 4 · Mobile & Design</h2>
+          <span class="module-coeff"><i class="fas fa-star"></i> coeff. 2</span>
+        </div>
+        <div class="module-desc">
+          <i class="fas fa-info-circle"></i> Créer des applications mobiles et maîtriser l'expérience utilisateur.
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin-bottom: 0.6rem;">
+          <span><i class="fab fa-flutter"></i> Flutter, React Native, Figma</span>
+          <span><i class="fas fa-clock"></i> Semaines 10 à 12</span>
+          <span class="pill-sm"><i class="fas fa-check-circle"></i> Prérequis : bases JavaScript/React</span>
+        </div>
+
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <h3><i class="fab fa-flutter"></i> Flutter</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Un framework pour créer des applications mobiles (iOS et Android) avec un seul code. Il utilise le langage Dart.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : une application de suivi de tâches qui fonctionne sur iPhone et Android.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fab fa-react"></i> React Native</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Une version de React pour le mobile. Elle permet de créer des applications natives en utilisant les composants React.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : une application de chat avec des bulles de discussion.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-pencil-ruler"></i> Figma</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> Un outil de design d'interface. Il permet de créer des maquettes et des prototypes avant de coder.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : une maquette interactive d'une application mobile avec des écrans et des boutons cliquables.</div>
+          </div>
+          <div class="concept-card">
+            <h3><i class="fas fa-users"></i> UX (Expérience utilisateur)</h3>
+            <div class="def"><i class="fas fa-chevron-right"></i> La discipline qui consiste à rendre une application agréable et facile à utiliser. Elle prend en compte les besoins et les émotions des utilisateurs.</div>
+            <div class="exemple"><i class="fas fa-lightbulb"></i> Exemple : placer un bouton d'action important en évidence et facilement accessible.</div>
+          </div>
+        </div>
+
+        <div class="inline-flex" style="margin-top: 0.8rem;">
+          <span class="livrable"><i class="fas fa-book"></i> Livrable : application mobile + maquette Figma</span>
+          <span class="evaluation"><i class="fas fa-check-circle"></i> Projet final + soutenance (coeff.2)</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===================== FOOTER ================================ -->
+    <!-- ============================================================ -->
+    <footer class="footer-meta">
+      <span class="note"><i class="fas fa-flag"></i> 7 mois · 4 modules · approche projet · débutant accepté</span>
+      <span class="badge-coeff-final"><i class="fas fa-check-circle"></i> Certification · portfolio complet</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
