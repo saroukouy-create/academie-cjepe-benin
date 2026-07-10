@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+ <title>CJEPE-BENIN | Formation Python, Django, Node.js, JavaScript, MySQL, Git/GitHub - Cours complet débutant</title>
+ <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2">
+ <style>
+ @font-face {
+ font-family: 'Inter';
+ src: url('fonts/inter-latin.woff2') format('woff2');
+ font-style: normal;
+ font-weight: 300 700;
+ font-display: swap;
+ }
+
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+
+ body {
+ font-family: 'Inter', system-ui, 'Segoe UI', -apple-system, 'Roboto', sans-serif;
+ background: #f8fafc;
+ color: #0f172a;
+ line-height: 1.5;
+ }
+ .top-bar {
+ background: #ffffff;
+ border-bottom: 1px solid #e2e8f0;
+ box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+ position: sticky;
+ top: 0;
+ z-index: 100;
+ backdrop-filter: blur(2px);
+ }
+
+ .nav-container {
+ max-width: 1400px;
+ margin: 0 auto;
+ padding: 0.75rem 2rem;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ align-items: center;
+ gap: 1rem;
+ }
+
+ .logo {
+ font-size: 1.45rem;
+ font-weight: 800;
+ background: linear-gradient(135deg, #2563eb, #7c3aed);
+ -webkit-background-clip: text;
+ background-clip: text;
+ color: transparent;
+ letter-spacing: -0.3px;
+ }
+
+ .nav-tabs {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 0.4rem;
+ }
+
+ .tab-btn {
+ background: transparent;
+ border: none;
+ padding: 0.5rem 1.2rem;
+ border-radius: 40px;
+ font-weight: 600;
+ font-size: 0.9rem;
+ color: #475569;
+ cursor: pointer;
+ transition: all 0.2s;
+ }
+
+ .tab-btn:hover {
+ background: #eef2ff;
+ color: #1e40af;
+ }
+
+ .tab-btn.active {
+ background: #2563eb;
+ color: white;
+ box-shadow: 0 4px 10px rgba(37,99,235,0.2);
+ }
+
+ .container {
+ max-width: 1300px;
+ margin: 2rem auto;
+ padding: 0 1.5rem;
+ }
+
+ .module {
+ display: none;
+ animation: fadeSlide 0.35s ease-out;
+ }
+
+ .module.active-module {
+ display: block;
+ }
+
+ @keyframes fadeSlide {
+ from { opacity: 0; transform: translateY(12px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+
+ .chapter-card {
+ background: white;
+ border-radius: 28px;
+ margin-bottom: 2rem;
+ box-shadow: 0 8px 20px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.02);
+ border: 1px solid #e9eef3;
+ overflow: hidden;
+ }
+
+ .card-head {
+ background: #ffffff;
+ padding: 1.3rem 2rem;
+ border-bottom: 2px solid #eef2ff;
+ display: flex;
+ justify-content: space-between;
+ align-items: baseline;
+ flex-wrap: wrap;
+ }
+
+ .card-title {
+ font-size: 1.5rem;
+ font-weight: 700;
+ background: linear-gradient(135deg, #1e293b, #2d3a5e);
+ -webkit-background-clip: text;
+ background-clip: text;
+ color: transparent;
+ }
+
+ .badge {
+ background: #dbeafe;
+ color: #1e40af;
+ padding: 0.25rem 0.9rem;
+ border-radius: 30px;
+ font-size: 0.75rem;
+ font-weight: 600;
+ }
+
+ .content-pane {
+ padding: 1.8rem 2rem;
+ }
+
+ .content-pane h2 {
+ font-size: 1.8rem;
+ font-weight: 700;
+ margin-bottom: 1rem;
+ color: #0f172a;
+ }
+
+ .content-pane h3 {
+ font-size: 1.35rem;
+ font-weight: 600;
+ margin: 1.6rem 0 0.8rem 0;
+ color: #1e293b;
+ border-left: 5px solid #3b82f6;
+ padding-left: 1rem;
+ }
+
+ .code-window {
+ background: #0f172a;
+ border-radius: 20px;
+ margin: 1.3rem 0;
+ position: relative;
+ overflow: hidden;
+ }
+
+ .code-header {
+ background: #1e293b;
+ padding: 0.5rem 1rem;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ border-bottom: 1px solid #334155;
+ }
+
+ .lang-label {
+ color: #94a3b8;
+ font-family: monospace;
+ font-size: 0.75rem;
+ }
+
+ .copy-code {
+ background: #334155;
+ border: none;
+ padding: 0.2rem 0.8rem;
+ border-radius: 20px;
+ color: white;
+ font-size: 0.7rem;
+ cursor: pointer;
+ }
+
+ .code-window pre {
+ padding: 1.2rem;
+ overflow-x: auto;
+ font-family: 'JetBrains Mono', monospace;
+ font-size: 0.85rem;
+ color: #e2e8f0;
+ margin: 0;
+ white-space: pre-wrap;
+ word-break: break-word;
+ }
+
+ .info-box {
+ background: #eff6ff;
+ border-left: 5px solid #3b82f6;
+ padding: 1rem 1.5rem;
+ border-radius: 20px;
+ margin: 1.2rem 0;
+ }
+
+ .exercise-box {
+ background: #fef9e3;
+ border: 1px solid #fde047;
+ border-radius: 24px;
+ padding: 1.3rem 1.8rem;
+ margin: 1.8rem 0;
+ }
+
+ .exercise-box h4 {
+ font-size: 1.25rem;
+ font-weight: 700;
+ color: #b45309;
+ margin-bottom: 0.5rem;
+ }
+
+ details {
+ margin-top: 1rem;
+ cursor: pointer;
+ }
+
+ details summary {
+ font-weight: 600;
+ color: #2563eb;
+ }
+
+ .tp-box {
+ background: #ecfdf5;
+ border: 1px solid #6ee7b7;
+ border-radius: 24px;
+ padding: 1.3rem 1.8rem;
+ margin: 1.8rem 0;
+ }
+
+ .tp-box h4 {
+ font-size: 1.25rem;
+ font-weight: 700;
+ color: #047857;
+ margin-bottom: 0.4rem;
+ }
+
+ .tp-meta {
+ font-size: 0.8rem;
+ font-weight: 600;
+ color: #065f46;
+ background: #d1fae5;
+ display: inline-block;
+ padding: 0.2rem 0.8rem;
+ border-radius: 30px;
+ margin-bottom: 0.9rem;
+ }
+
+ .tp-box ol, .tp-box ul {
+ margin: 0.6rem 0 0.9rem 1.4rem;
+ }
+
+ .tp-box li {
+ margin-bottom: 0.35rem;
+ }
+
+ .tp-result {
+ background: #d1fae5;
+ border-radius: 14px;
+ padding: 0.8rem 1.1rem;
+ margin: 0.8rem 0;
+ font-size: 0.92rem;
+ }
+
+ .quiz-box {
+ background: #f5f3ff;
+ border: 1px solid #c4b5fd;
+ border-radius: 24px;
+ padding: 1.3rem 1.8rem;
+ margin: 1.8rem 0;
+ }
+
+ .quiz-box h4 {
+ font-size: 1.25rem;
+ font-weight: 700;
+ color: #5b21b6;
+ margin-bottom: 1rem;
+ }
+
+ .quiz-question {
+ margin-bottom: 1.2rem;
+ padding-bottom: 1.1rem;
+ border-bottom: 1px dashed #ddd6fe;
+ }
+
+ .quiz-question:last-of-type {
+ border-bottom: none;
+ padding-bottom: 0;
+ }
+
+ .quiz-question .q-text {
+ font-weight: 600;
+ margin-bottom: 0.6rem;
+ color: #1e293b;
+ }
+
+ .quiz-option {
+ display: block;
+ padding: 0.55rem 0.9rem;
+ margin: 0.35rem 0;
+ border-radius: 12px;
+ cursor: pointer;
+ border: 1px solid #e5e7eb;
+ background: white;
+ font-size: 0.92rem;
+ transition: background 0.15s;
+ }
+
+ .quiz-option:hover {
+ background: #faf5ff;
+ }
+
+ .quiz-option input {
+ margin-right: 0.6rem;
+ }
+
+ .quiz-option.correct-answer {
+ border-color: #22c55e;
+ background: #f0fdf4;
+ }
+
+ .quiz-option.wrong-answer {
+ border-color: #ef4444;
+ background: #fef2f2;
+ }
+
+ .quiz-check-btn {
+ background: #7c3aed;
+ color: white;
+ border: none;
+ padding: 0.6rem 1.5rem;
+ border-radius: 30px;
+ font-weight: 600;
+ font-size: 0.9rem;
+ cursor: pointer;
+ margin-top: 0.4rem;
+ }
+
+ .quiz-check-btn:hover {
+ background: #6d28d9;
+ }
+
+ .quiz-result {
+ margin-top: 1rem;
+ padding: 0.8rem 1.2rem;
+ border-radius: 16px;
+ font-weight: 700;
+ display: none;
+ }
+
+ footer {
+ text-align: center;
+ border-top: 1px solid #e2e8f0;
+ padding: 2rem;
+ margin-top: 3rem;
+ color: #64748b;
+ }
+
+ @media (max-width: 700px) {
+ .content-pane { padding: 1.2rem; }
+ .card-head { padding: 1rem; }
+ .nav-container { padding: 0.75rem 1rem; }
+ .tab-btn { padding: 0.3rem 0.9rem; font-size: 0.8rem; }
+ }
+ </style>
+ <link rel="stylesheet" href="charte-cjepe.css" />
+</head>
+<body>
+<div id="topBackBar"><a href="index.html">&#8592; Retour à l'accueil</a></div>
+<div class="top-bar">
+ <div class="nav-container">
+ <div class="logo">Formation Python, Django, Node.js, JavaScript, MySQL, Git/GitHub</div>
+ <div class="nav-tabs">
+ <button class="tab-btn active" data-module="python">Python</button>
+ <button class="tab-btn" data-module="django">Django</button>
+ <button class="tab-btn" data-module="javascript">JavaScript</button>
+ <button class="tab-btn" data-module="nodejs">Node.js</button>
+ <button class="tab-btn" data-module="mysql">MySQL</button>
+ <button class="tab-btn" data-module="git">Git & GitHub</button>
+ <button class="tab-btn" data-module="architecture">Archi RH</button>
+ <button class="tab-btn" data-module="phases">Projet RH (8 phases)</button>
+ </div>
+ </div>
+</div>
+
+<div class="container">
+ <!-- MODULE PYTHON -->
+ <div id="python-module" class="module active-module">
+ <div class="chapter-card"><div class="card-head"><span class="card-title">Python - Fondamentaux complets</span><span class="badge">Variables, conditions, fonctions, POO</span></div>
+ <div class="content-pane">
+ <h2>Introduction - Python</h2>
+ <p>Python : langage simple, lisible, très utilisé (web, data, IA).</p>
+ <div class="code-window"><div class="code-header"><span class="lang-label">python</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code># Variables et types
+nom = "Alice" # str
+age = 25 # int
+taille = 1.65 # float
+est_majeur = True # bool
+
+print(f"Je m'appelle {nom}, j'ai {age} ans")</code></pre></div>
+ <h3>Structures de contrôle</h3>
+ <div class="code-window"><div class="code-header"><span class="lang-label">python</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>if age >= 18:
+ print("Majeur")
+else:
+ print("Mineur")
+
+for i in range(3):
+ print(f"Itération {i}")</code></pre></div>
+ <h3>Listes, dictionnaires et fonctions</h3>
+ <div class="code-window"><div class="code-header"><span class="lang-label">python</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>def saluer(nom):
+ return f"Bonjour {nom} !"
+
+employes = ["Alice", "Bob"]
+for e in employes:
+ print(saluer(e))</code></pre></div>
+ <div class="exercise-box"><h4>Exercice : calculette interactive</h4><p>Demander deux nombres à l'utilisateur et afficher somme, produit, moyenne.</p>
+ <details><summary>Solution</summary><div class="code-window"><pre><code>a = float(input("Premier nombre : "))
+b = float(input("Second : "))
+print(f"Somme={a+b}, Produit={a*b}, Moyenne={(a+b)/2}")</code></pre></div></details></div>
+ <div class="info-box">Python utilise l'indentation pour délimiter les blocs. Ne mélange pas tabulations et espaces.</div>
+
+ <div class="tp-box">
+ <h4>🛠️ TP Python : Gestion simple d'employés</h4>
+ <span class="tp-meta">Durée estimée : 30-45 min</span>
+ <p><strong>Objectif :</strong> manipuler listes, dictionnaires et fonctions pour traiter une petite liste d'employés.</p>
+ <p><strong>Consignes :</strong></p>
+ <ol>
+ <li>Crée une liste de dictionnaires <code>employes</code>, chacun avec les clés <code>nom</code> et <code>salaire</code> (au moins 4 employés).</li>
+ <li>écris une fonction <code>salaire_total(employes)</code> qui retourne la somme des salaires.</li>
+ <li>écris une fonction <code>trier_par_salaire(employes)</code> qui retourne la liste triée par salaire décroissant.</li>
+ <li>Affiche chaque employé avec <code>print</code> au format : <code>Nom - Salaire FCFA</code>.</li>
+ <li><strong>Bonus :</strong> affiche uniquement les employés dont le salaire dépasse 300000.</li>
+ </ol>
+ <div class="tp-result"><strong>Résultat attendu :</strong> la liste des employés triée du plus gros au plus petit salaire, puis le salaire total affiché, puis la liste filtrée en bonus.</div>
+ <details><summary>Solution</summary><div class="code-window"><pre><code>employes = [
+ {"nom": "Alice", "salaire": 450000},
+ {"nom": "Bob", "salaire": 280000},
+ {"nom": "Chantal", "salaire": 520000},
+ {"nom": "David", "salaire": 310000},
+]
+
+def salaire_total(employes):
+ return sum(e["salaire"] for e in employes)
+
+def trier_par_salaire(employes):
+ return sorted(employes, key=lambda e: e["salaire"], reverse=True)
+
+for e in trier_par_salaire(employes):
+ print(f"{e['nom']} - {e['salaire']} FCFA")
+
+print(f"Salaire total : {salaire_total(employes)} FCFA")
+
+# Bonus
+print("Employés > 300000 :")
+for e in employes:
+ if e["salaire"] > 300000:
+ print(e["nom"])</code></pre></div></details>
+ </div>
+
+ <div class="quiz-box" data-quiz="python">
+ <h4>🧠 Quiz : Python</h4>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">1. Quel type de données représente Vrai/Faux en Python ?</p>
+ <label class="quiz-option"><input type="radio" name="python-q1" value="0"> str</label>
+ <label class="quiz-option"><input type="radio" name="python-q1" value="1"> int</label>
+ <label class="quiz-option"><input type="radio" name="python-q1" value="2"> bool</label>
+ <label class="quiz-option"><input type="radio" name="python-q1" value="3"> float</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">2. Que fait <code>range(3)</code> ?</p>
+ <label class="quiz-option"><input type="radio" name="python-q2" value="0"> Génère 1, 2, 3</label>
+ <label class="quiz-option"><input type="radio" name="python-q2" value="1"> Génère 0, 1, 2</label>
+ <label class="quiz-option"><input type="radio" name="python-q2" value="2"> Génère 0, 1, 2, 3</label>
+ <label class="quiz-option"><input type="radio" name="python-q2" value="3"> Retourne une erreur</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">3. Quel mot-clé permet de définir une fonction en Python ?</p>
+ <label class="quiz-option"><input type="radio" name="python-q3" value="0"> function</label>
+ <label class="quiz-option"><input type="radio" name="python-q3" value="1"> def</label>
+ <label class="quiz-option"><input type="radio" name="python-q3" value="2"> func</label>
+ <label class="quiz-option"><input type="radio" name="python-q3" value="3"> void</label>
+ </div>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">4. Quelle structure stocke des paires clé/valeur ?</p>
+ <label class="quiz-option"><input type="radio" name="python-q4" value="0"> Liste</label>
+ <label class="quiz-option"><input type="radio" name="python-q4" value="1"> Tuple</label>
+ <label class="quiz-option"><input type="radio" name="python-q4" value="2"> Dictionnaire</label>
+ <label class="quiz-option"><input type="radio" name="python-q4" value="3"> Set</label>
+ </div>
+ <div class="quiz-question" data-correct="0">
+ <p class="q-text">5. Que fait le code : <code>for i in range(3): print(i)</code> ?</p>
+ <label class="quiz-option"><input type="radio" name="python-q5" value="0"> Affiche 0, 1, 2</label>
+ <label class="quiz-option"><input type="radio" name="python-q5" value="1"> Affiche 1, 2, 3</label>
+ <label class="quiz-option"><input type="radio" name="python-q5" value="2"> Affiche 0, 1, 2, 3</label>
+ <label class="quiz-option"><input type="radio" name="python-q5" value="3"> Provoque une erreur</label>
+ </div>
+ <button class="quiz-check-btn" onclick="checkQuiz('python')">Vérifier mes réponses</button>
+ <div class="quiz-result"></div>
+ </div>
+ </div></div>
+ </div>
+
+ <!-- MODULE DJANGO -->
+ <div id="django-module" class="module">
+ <div class="chapter-card"><div class="card-head"><span class="card-title">Django - Framework web Python</span><span class="badge">MVT, ORM, Admin</span></div>
+ <div class="content-pane">
+ <h2>Architecture MVT (Modèle-Vue-Template)</h2>
+ <div class="code-window"><div class="code-header"><span class="lang-label">views.py</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>from django.shortcuts import render
+from django.http import HttpResponse
+
+def accueil(request):
+ return HttpResponse("Bienvenue sur mon site Django !")</code></pre></div>
+ <h3>Modèle (Base de données)</h3>
+ <div class="code-window"><div class="code-header"><span class="lang-label">models.py</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>from django.db import models
+
+class Employee(models.Model):
+ nom = models.CharField(max_length=100)
+ salaire = models.DecimalField(max_digits=10, decimal_places=2)
+ date_embauche = models.DateField()</code></pre></div>
+ <div class="exercise-box"><h4>Mini-projet : créer une vue qui affiche "Bonjour [nom]"</h4><details><summary>Solution</summary><div class="code-window"><pre><code>def bonjour(request, nom):
+ return HttpResponse(f"Bonjour {nom} !")</code></pre></div></details></div>
+
+ <div class="tp-box">
+ <h4>🛠️ TP Django : Vue liste des employés</h4>
+ <span class="tp-meta">Durée estimée : 45-60 min</span>
+ <p><strong>Objectif :</strong> créer une application Django capable d'afficher la liste des employés depuis la base de données.</p>
+ <p><strong>Consignes :</strong></p>
+ <ol>
+ <li>Crée un modèle <code>Employee</code> (nom, salaire, date_embauche) dans <code>models.py</code>.</li>
+ <li>Lance <code>python manage.py makemigrations</code> puis <code>python manage.py migrate</code>.</li>
+ <li>Ajoute 3 employés via l'interface admin (<code>python manage.py createsuperuser</code>).</li>
+ <li>écris une vue <code>employee_list</code> qui récupère tous les employés avec <code>Employee.objects.all()</code>.</li>
+ <li>Retourne la liste au format texte avec <code>HttpResponse</code> (un employé par ligne).</li>
+ <li>Déclare l'URL <code>/employes/</code> dans <code>urls.py</code> pointant vers cette vue.</li>
+ </ol>
+ <div class="tp-result"><strong>Résultat attendu :</strong> la page <code>/employes/</code> affiche la liste des 3 employés créés, avec leur nom et salaire.</div>
+ <details><summary>Solution</summary><div class="code-window"><div class="code-header"><span class="lang-label">views.py</span></div><pre><code>from django.http import HttpResponse
+from .models import Employee
+
+def employee_list(request):
+ employees = Employee.objects.all()
+ lignes = [f"{e.nom} - {e.salaire} FCFA" for e in employees]
+ return HttpResponse("<br>".join(lignes))</code></pre></div>
+ <div class="code-window"><div class="code-header"><span class="lang-label">urls.py</span></div><pre><code>from django.urls import path
+from . import views
+
+urlpatterns = [
+ path('employes/', views.employee_list, name='employee_list'),
+]</code></pre></div></details>
+ </div>
+
+ <div class="quiz-box" data-quiz="django">
+ <h4>🧠 Quiz : Django</h4>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">1. Django suit quelle architecture ?</p>
+ <label class="quiz-option"><input type="radio" name="django-q1" value="0"> MVC</label>
+ <label class="quiz-option"><input type="radio" name="django-q1" value="1"> MVT (Modèle-Vue-Template)</label>
+ <label class="quiz-option"><input type="radio" name="django-q1" value="2"> MVVM</label>
+ <label class="quiz-option"><input type="radio" name="django-q1" value="3"> MTV inversé</label>
+ </div>
+ <div class="quiz-question" data-correct="0">
+ <p class="q-text">2. Quelle commande crée un nouveau projet Django ?</p>
+ <label class="quiz-option"><input type="radio" name="django-q2" value="0"> django-admin startproject</label>
+ <label class="quiz-option"><input type="radio" name="django-q2" value="1"> python startproject</label>
+ <label class="quiz-option"><input type="radio" name="django-q2" value="2"> django new project</label>
+ <label class="quiz-option"><input type="radio" name="django-q2" value="3"> npm init django</label>
+ </div>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">3. Où définit-on les modèles (tables de la base de données) ?</p>
+ <label class="quiz-option"><input type="radio" name="django-q3" value="0"> views.py</label>
+ <label class="quiz-option"><input type="radio" name="django-q3" value="1"> urls.py</label>
+ <label class="quiz-option"><input type="radio" name="django-q3" value="2"> models.py</label>
+ <label class="quiz-option"><input type="radio" name="django-q3" value="3"> settings.py</label>
+ </div>
+ <div class="quiz-question" data-correct="0">
+ <p class="q-text">4. Quelle commande applique les migrations en base de données ?</p>
+ <label class="quiz-option"><input type="radio" name="django-q4" value="0"> python manage.py migrate</label>
+ <label class="quiz-option"><input type="radio" name="django-q4" value="1"> python manage.py runserver</label>
+ <label class="quiz-option"><input type="radio" name="django-q4" value="2"> python manage.py makemigrations</label>
+ <label class="quiz-option"><input type="radio" name="django-q4" value="3"> python manage.py collectstatic</label>
+ </div>
+ <div class="quiz-question" data-correct="0">
+ <p class="q-text">5. Quelle fonction renvoie une réponse HTTP en texte brut ?</p>
+ <label class="quiz-option"><input type="radio" name="django-q5" value="0"> HttpResponse</label>
+ <label class="quiz-option"><input type="radio" name="django-q5" value="1"> render</label>
+ <label class="quiz-option"><input type="radio" name="django-q5" value="2"> redirect</label>
+ <label class="quiz-option"><input type="radio" name="django-q5" value="3"> JsonResponse</label>
+ </div>
+ <button class="quiz-check-btn" onclick="checkQuiz('django')">Vérifier mes réponses</button>
+ <div class="quiz-result"></div>
+ </div>
+ </div></div>
+ </div>
+
+ <!-- MODULE JAVASCRIPT -->
+ <div id="javascript-module" class="module">
+ <div class="chapter-card"><div class="card-head"><span class="card-title">JavaScript - Interactivité navigateur</span><span class="badge">DOM, événements, moderne</span></div>
+ <div class="content-pane">
+ <h2>Variables, fonctions et DOM</h2>
+ <div class="code-window"><div class="code-header"><span class="lang-label">javascript</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>// Variables
+let nom = "Marie";
+const age = 28;
+
+// Fonction
+function saluer() {
+ alert(`Bonjour ${nom}`);
+}
+
+// Manipulation du DOM
+document.getElementById("monBouton").addEventListener("click", () => {
+ document.body.style.backgroundColor = "lightblue";
+});</code></pre></div>
+ <h3>Boucles et conditions</h3>
+ <div class="code-window"><div class="code-header"><span class="lang-label">javascript</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>let notes = [12, 15, 8];
+for(let note of notes) {
+ if(note >= 10) console.log("Validé");
+}</code></pre></div>
+ <div class="exercise-box"><h4>Exercice : mini calculatrice en HTML/JS</h4><details><summary>Solution</summary><div class="code-window"><pre><code>function addition() {
+ let a = parseInt(document.getElementById('a').value);
+ let b = parseInt(document.getElementById('b').value);
+ alert(a+b);
+}</code></pre></div></details></div>
+
+ <div class="tp-box">
+ <h4>🛠️ TP JavaScript : Formulaire de contact validé</h4>
+ <span class="tp-meta">Durée estimée : 40-50 min</span>
+ <p><strong>Objectif :</strong> manipuler le DOM et les événements pour valider un formulaire côté client.</p>
+ <p><strong>Consignes :</strong></p>
+ <ol>
+ <li>Crée un formulaire HTML avec deux champs : <code>nom</code> et <code>email</code>, et un bouton "Envoyer".</li>
+ <li>écoute l'événement <code>submit</code> du formulaire en JavaScript.</li>
+ <li>Empêche l'envoi par défaut avec <code>event.preventDefault()</code>.</li>
+ <li>Vérifie que le champ <code>nom</code> n'est pas vide et que l'email contient un <code>@</code>.</li>
+ <li>Affiche un message de succès ou d'erreur dans une zone <code>&lt;div id="message"&gt;</code>.</li>
+ </ol>
+ <div class="tp-result"><strong>Résultat attendu :</strong> si les champs sont valides, un message vert "Merci [nom], formulaire envoyé !" s'affiche. Sinon, un message rouge indique l'erreur.</div>
+ <details><summary>Solution</summary><div class="code-window"><pre><code>const form = document.getElementById('contactForm');
+const message = document.getElementById('message');
+
+form.addEventListener('submit', (event) => {
+ event.preventDefault();
+ const nom = document.getElementById('nom').value.trim();
+ const email = document.getElementById('email').value.trim();
+
+ if (nom === '' || !email.includes('@')) {
+ message.textContent = "Erreur : vérifie le nom et l'email.";
+ message.style.color = 'red';
+ return;
+ }
+
+ message.textContent = `Merci ${nom}, formulaire envoyé !`;
+ message.style.color = 'green';
+});</code></pre></div></details>
+ </div>
+
+ <div class="quiz-box" data-quiz="javascript">
+ <h4>🧠 Quiz : JavaScript</h4>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">1. Quelle déclaration crée une variable non réassignable ?</p>
+ <label class="quiz-option"><input type="radio" name="js-q1" value="0"> var</label>
+ <label class="quiz-option"><input type="radio" name="js-q1" value="1"> let</label>
+ <label class="quiz-option"><input type="radio" name="js-q1" value="2"> const</label>
+ <label class="quiz-option"><input type="radio" name="js-q1" value="3"> static</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">2. Quelle méthode sélectionne un élément par son <code>id</code> ?</p>
+ <label class="quiz-option"><input type="radio" name="js-q2" value="0"> querySelectorAll</label>
+ <label class="quiz-option"><input type="radio" name="js-q2" value="1"> getElementById</label>
+ <label class="quiz-option"><input type="radio" name="js-q2" value="2"> getElementByClass</label>
+ <label class="quiz-option"><input type="radio" name="js-q2" value="3"> find</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">3. Quel événement se déclenche lors d'un clic ?</p>
+ <label class="quiz-option"><input type="radio" name="js-q3" value="0"> load</label>
+ <label class="quiz-option"><input type="radio" name="js-q3" value="1"> click</label>
+ <label class="quiz-option"><input type="radio" name="js-q3" value="2"> submit</label>
+ <label class="quiz-option"><input type="radio" name="js-q3" value="3"> change</label>
+ </div>
+ <div class="quiz-question" data-correct="0">
+ <p class="q-text">4. Que fait <code>event.preventDefault()</code> dans un gestionnaire de soumission de formulaire ?</p>
+ <label class="quiz-option"><input type="radio" name="js-q4" value="0"> Empêche le rechargement/l'envoi par défaut du formulaire</label>
+ <label class="quiz-option"><input type="radio" name="js-q4" value="1"> Supprime le formulaire</label>
+ <label class="quiz-option"><input type="radio" name="js-q4" value="2"> Envoie le formulaire deux fois</label>
+ <label class="quiz-option"><input type="radio" name="js-q4" value="3"> Ne fait rien</label>
+ </div>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">5. Quelle syntaxe est un template literal ?</p>
+ <label class="quiz-option"><input type="radio" name="js-q5" value="0"> "texte" + var</label>
+ <label class="quiz-option"><input type="radio" name="js-q5" value="1"> 'texte'</label>
+ <label class="quiz-option"><input type="radio" name="js-q5" value="2"> `texte ${var}`</label>
+ <label class="quiz-option"><input type="radio" name="js-q5" value="3"> texte(var)</label>
+ </div>
+ <button class="quiz-check-btn" onclick="checkQuiz('javascript')">Vérifier mes réponses</button>
+ <div class="quiz-result"></div>
+ </div>
+ </div></div>
+ </div>
+
+ <!-- MODULE NODE.JS -->
+ <div id="nodejs-module" class="module">
+ <div class="chapter-card"><div class="card-head"><span class="card-title">Node.js - JavaScript côté serveur</span><span class="badge">Serveur HTTP, Express, API</span></div>
+ <div class="content-pane">
+ <h2>Premier serveur HTTP</h2>
+ <div class="code-window"><div class="code-header"><span class="lang-label">javascript</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>const http = require('http');
+const server = http.createServer((req, res) => {
+ res.writeHead(200, {'Content-Type': 'text/html'});
+ res.end('<h1>Hello Node.js !</h1>');
+});
+server.listen(3000, () => console.log('Serveur sur port 3000'));</code></pre></div>
+ <h3>Modules et npm</h3>
+ <div class="info-box">npm init -y pour créer package.json. Installer express : npm install express</div>
+ <div class="exercise-box"><h4>Exercice : API REST simple avec Express</h4><details><summary>Solution</summary><div class="code-window"><pre><code>const express = require('express');
+const app = express();
+app.get('/api/bonjour', (req,res) => res.json({message:"Bonjour"}));
+app.listen(3000);</code></pre></div></details></div>
+
+ <div class="tp-box">
+ <h4>🛠️ TP Node.js : Mini API Employés (Express)</h4>
+ <span class="tp-meta">Durée estimée : 45-60 min</span>
+ <p><strong>Objectif :</strong> créer une API REST avec Express pour gérer une liste d'employés en mémoire.</p>
+ <p><strong>Consignes :</strong></p>
+ <ol>
+ <li>Initialise un projet avec <code>npm init -y</code> et installe <code>express</code>.</li>
+ <li>Crée un tableau <code>employes</code> en mémoire avec quelques employés (id, nom, salaire).</li>
+ <li>Crée une route <code>GET /api/employes</code> qui retourne la liste complète en JSON.</li>
+ <li>Crée une route <code>GET /api/employes/:id</code> qui retourne un employé précis.</li>
+ <li>Crée une route <code>POST /api/employes</code> qui ajoute un nouvel employé (via <code>express.json()</code>).</li>
+ </ol>
+ <div class="tp-result"><strong>Résultat attendu :</strong> avec Postman ou le navigateur, <code>GET /api/employes</code> renvoie un tableau JSON, et un <code>POST</code> avec un corps JSON ajoute un employé consultable ensuite.</div>
+ <details><summary>Solution</summary><div class="code-window"><pre><code>const express = require('express');
+const app = express();
+app.use(express.json());
+
+let employes = [
+ { id: 1, nom: "Alice", salaire: 450000 },
+ { id: 2, nom: "Bob", salaire: 300000 },
+];
+
+app.get('/api/employes', (req, res) => {
+ res.json(employes);
+});
+
+app.get('/api/employes/:id', (req, res) => {
+ const employe = employes.find(e => e.id === parseInt(req.params.id));
+ if (!employe) return res.status(404).json({ erreur: "Employé introuvable" });
+ res.json(employe);
+});
+
+app.post('/api/employes', (req, res) => {
+ const nouvel = { id: employes.length + 1, ...req.body };
+ employes.push(nouvel);
+ res.status(201).json(nouvel);
+});
+
+app.listen(3000, () => console.log('API sur port 3000'));</code></pre></div></details>
+ </div>
+
+ <div class="quiz-box" data-quiz="nodejs">
+ <h4>🧠 Quiz : Node.js</h4>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">1. Node.js permet d'exécuter du JavaScript où ?</p>
+ <label class="quiz-option"><input type="radio" name="node-q1" value="0"> Uniquement dans le navigateur</label>
+ <label class="quiz-option"><input type="radio" name="node-q1" value="1"> Côté serveur</label>
+ <label class="quiz-option"><input type="radio" name="node-q1" value="2"> Uniquement dans une base de données</label>
+ <label class="quiz-option"><input type="radio" name="node-q1" value="3"> Uniquement dans Excel</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">2. Quelle commande installe un package npm ?</p>
+ <label class="quiz-option"><input type="radio" name="node-q2" value="0"> npm get express</label>
+ <label class="quiz-option"><input type="radio" name="node-q2" value="1"> npm install express</label>
+ <label class="quiz-option"><input type="radio" name="node-q2" value="2"> node install express</label>
+ <label class="quiz-option"><input type="radio" name="node-q2" value="3"> pip install express</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">3. Quel module natif de Node.js permet de créer un serveur HTTP ?</p>
+ <label class="quiz-option"><input type="radio" name="node-q3" value="0"> express</label>
+ <label class="quiz-option"><input type="radio" name="node-q3" value="1"> http</label>
+ <label class="quiz-option"><input type="radio" name="node-q3" value="2"> fs</label>
+ <label class="quiz-option"><input type="radio" name="node-q3" value="3"> path</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">4. Express est...</p>
+ <label class="quiz-option"><input type="radio" name="node-q4" value="0"> Un langage de programmation</label>
+ <label class="quiz-option"><input type="radio" name="node-q4" value="1"> Un framework web pour Node.js</label>
+ <label class="quiz-option"><input type="radio" name="node-q4" value="2"> Une base de données</label>
+ <label class="quiz-option"><input type="radio" name="node-q4" value="3"> Un éditeur de code</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">5. Quelle méthode démarre le serveur sur un port ?</p>
+ <label class="quiz-option"><input type="radio" name="node-q5" value="0"> server.start()</label>
+ <label class="quiz-option"><input type="radio" name="node-q5" value="1"> server.listen()</label>
+ <label class="quiz-option"><input type="radio" name="node-q5" value="2"> server.run()</label>
+ <label class="quiz-option"><input type="radio" name="node-q5" value="3"> server.open()</label>
+ </div>
+ <button class="quiz-check-btn" onclick="checkQuiz('nodejs')">Vérifier mes réponses</button>
+ <div class="quiz-result"></div>
+ </div>
+ </div></div>
+ </div>
+
+ <!-- MODULE MYSQL -->
+ <div id="mysql-module" class="module">
+ <div class="chapter-card"><div class="card-head"><span class="card-title">MySQL - Bases de données relationnelles</span><span class="badge">SQL, CRUD, jointures</span></div>
+ <div class="content-pane">
+ <h2>Commandes SQL essentielles</h2>
+ <div class="code-window"><div class="code-header"><span class="lang-label">sql</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>CREATE DATABASE entreprise;
+USE entreprise;
+
+CREATE TABLE employes (
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ nom VARCHAR(50),
+ salaire DECIMAL(10,2)
+);
+
+INSERT INTO employes (nom, salaire) VALUES ('Alice', 450000);
+SELECT * FROM employes WHERE salaire > 400000;</code></pre></div>
+ <div class="exercise-box"><h4>Requête : sélectionner les employés dont le nom commence par 'A'</h4><details><summary>Solution</summary><div class="code-window"><pre><code>SELECT * FROM employes WHERE nom LIKE 'A%';</code></pre></div></details></div>
+
+ <div class="tp-box">
+ <h4>🛠️ TP MySQL : Requêtes sur la table employés</h4>
+ <span class="tp-meta">Durée estimée : 30-40 min</span>
+ <p><strong>Objectif :</strong> pratiquer les requêtes SQL essentielles (SELECT, WHERE, ORDER BY, UPDATE, DELETE) sur la table <code>employes</code>.</p>
+ <p><strong>Consignes :</strong></p>
+ <ol>
+ <li>Insère au moins 5 employés dans la table <code>employes</code>.</li>
+ <li>écris une requête qui calcule le salaire moyen (<code>AVG</code>).</li>
+ <li>écris une requête qui affiche les 3 employés les mieux payés (<code>ORDER BY ... LIMIT</code>).</li>
+ <li>écris une requête qui augmente de 10% le salaire de l'employé nommé "Alice" (<code>UPDATE</code>).</li>
+ <li>écris une requête qui supprime les employés dont le salaire est inférieur à 200000 (<code>DELETE</code>).</li>
+ </ol>
+ <div class="tp-result"><strong>Résultat attendu :</strong> chaque requête s'exécute sans erreur et modifie/affiche les données comme attendu (vérifie avec <code>SELECT * FROM employes;</code> après chaque étape).</div>
+ <details><summary>Solution</summary><div class="code-window"><pre><code>SELECT AVG(salaire) AS salaire_moyen FROM employes;
+
+SELECT * FROM employes ORDER BY salaire DESC LIMIT 3;
+
+UPDATE employes SET salaire = salaire * 1.10 WHERE nom = 'Alice';
+
+DELETE FROM employes WHERE salaire < 200000;</code></pre></div></details>
+ </div>
+
+ <div class="quiz-box" data-quiz="mysql">
+ <h4>🧠 Quiz : MySQL</h4>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">1. Quelle instruction sélectionne toutes les colonnes d'une table ?</p>
+ <label class="quiz-option"><input type="radio" name="mysql-q1" value="0"> SELECT ALL</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q1" value="1"> SELECT *</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q1" value="2"> GET *</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q1" value="3"> FETCH *</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">2. Quelle clause filtre les lignes retournées ?</p>
+ <label class="quiz-option"><input type="radio" name="mysql-q2" value="0"> ORDER BY</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q2" value="1"> WHERE</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q2" value="2"> GROUP BY</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q2" value="3"> LIMIT</label>
+ </div>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">3. Quel type de données convient pour stocker un salaire précis ?</p>
+ <label class="quiz-option"><input type="radio" name="mysql-q3" value="0"> INT</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q3" value="1"> FLOAT</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q3" value="2"> DECIMAL</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q3" value="3"> VARCHAR</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">4. Quelle instruction ajoute une nouvelle ligne dans une table ?</p>
+ <label class="quiz-option"><input type="radio" name="mysql-q4" value="0"> ADD</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q4" value="1"> INSERT INTO</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q4" value="2"> CREATE</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q4" value="3"> APPEND</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">5. Quel opérateur permet une recherche par motif (ex : commence par 'A') ?</p>
+ <label class="quiz-option"><input type="radio" name="mysql-q5" value="0"> =</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q5" value="1"> LIKE</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q5" value="2"> IN</label>
+ <label class="quiz-option"><input type="radio" name="mysql-q5" value="3"> BETWEEN</label>
+ </div>
+ <button class="quiz-check-btn" onclick="checkQuiz('mysql')">Vérifier mes réponses</button>
+ <div class="quiz-result"></div>
+ </div>
+ </div></div>
+ </div>
+
+ <!-- MODULE GIT & GITHUB -->
+ <div id="git-module" class="module">
+ <div class="chapter-card"><div class="card-head"><span class="card-title">Git & GitHub - Cours complet débutant (pas à pas)</span><span class="badge">Versionnement, dépôt, déploiement</span></div>
+ <div class="content-pane">
+ <h2>PARTIE 1 - Comprendre Git et GitHub</h2>
+ <p><strong>Pourquoi Git ?</strong> Sauvegarde historique, retour en arrière, travail collaboratif.</p>
+ <div class="info-box">Git = outil local (ton cahier) | GitHub = cloud (bibliothèque en ligne)</div>
+ <h3>PARTIE 2 - Installation de Git (Windows)</h3>
+ <ul style="margin-left: 1.5rem;"><li>1. Télécharge sur <strong>git-scm.com</strong></li><li>2. Installe avec options par défaut</li><li>3. Vérifie : <code>git --version</code> dans le terminal</li></ul>
+ <h3>PARTIE 3 - Configuration obligatoire</h3>
+ <div class="code-window"><div class="code-header"><span class="lang-label">bash</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>git config --global user.name "Ton Nom"
+git config --global user.email "tonemail@example.com"</code></pre></div>
+ <h3>PARTIE 4 - Créer un compte GitHub</h3>
+ <p>Rends-toi sur github.com, puis Sign up, puis valide ton email.</p>
+ <h3>PARTIE 5 - Projet local : structure</h3>
+ <div class="code-window"><pre><code>mon-site/
++-- index.html
++-- style.css
++-- script.js</code></pre></div>
+ <h3>PARTIE 6 - Initialiser Git</h3>
+ <div class="code-window"><div class="code-header"><span class="lang-label">bash</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>cd mon-site
+git init</code></pre></div>
+ <h3>PARTIE 7 - Premières commandes (status, add, commit)</h3>
+ <div class="code-window"><pre><code>git status # voir fichiers non suivis
+git add . # ajouter tous les fichiers
+git commit -m "Premier commit"</code></pre></div>
+ <h3>PARTIE 8 - Lier au dépôt distant GitHub</h3>
+ <div class="code-window"><pre><code>git remote add origin https://github.com/ton-compte/mon-site.git
+git branch -M main
+git push -u origin main</code></pre></div>
+ <h3>PARTIE 9 - Modifier et mettre à jour</h3>
+ <div class="code-window"><pre><code>git add .
+git commit -m "Ajout d'une section contact"
+git push</code></pre></div>
+ <h3>PARTIE 10 - Fichier .gitignore</h3>
+ <div class="code-window"><pre><code># .gitignore
+node_modules/
+.env
+.DS_Store</code></pre></div>
+ <h3>PARTIE 11 - Déploiement avec GitHub Pages</h3>
+ <ul><li>Repo > Settings > Pages > Branch: main (folder: /root) > Save</li>
+ <li>Site accessible à : <code>https://ton-compte.github.io/mon-site/</code></li></ul>
+ <h3>PARTIE 12 - Bonnes pratiques</h3>
+ <ul><li>Commits atomiques (une fonctionnalité par commit)</li><li>Messages clairs : "Ajout formulaire contact"</li><li>git status avant chaque commit</li></ul>
+ <div class="tp-box">
+ <h4>🛠️ TP Git/GitHub : Projet final - Site vitrine déployé</h4>
+ <span class="tp-meta">Durée estimée : 45-60 min</span>
+ <p><strong>Objectif :</strong> versionner un mini-site avec Git et le publier en ligne via GitHub Pages.</p>
+ <p><strong>Consignes :</strong></p>
+ <ol>
+ <li>Crée un dossier <code>mon-site</code> contenant <code>index.html</code>, <code>style.css</code> et <code>script.js</code> (CV ou portfolio simple).</li>
+ <li>Initialise Git avec <code>git init</code> puis fais un premier commit (<code>git add .</code> + <code>git commit</code>).</li>
+ <li>Crée un dépôt vide sur GitHub, relie-le avec <code>git remote add origin ...</code> et pousse avec <code>git push -u origin main</code>.</li>
+ <li>Modifie une section du site (ex : ajoute une section "Contact"), commit puis push à nouveau.</li>
+ <li>Active GitHub Pages (Settings > Pages > branch main) et récupère le lien public.</li>
+ </ol>
+ <div class="tp-result"><strong>Résultat attendu :</strong> le site est visible publiquement à l'adresse <code>https://ton-compte.github.io/mon-site/</code>, avec au moins 2 commits dans l'historique.</div>
+ <details><summary>Étapes résumées</summary><p>1. Dossier avec index.html, CSS<br>2. git init + add + commit<br>3. Dépôt GitHub puis push<br>4. Activer Pages puis lien public</p></details>
+ </div>
+
+ <div class="quiz-box" data-quiz="git">
+ <h4>🧠 Quiz : Git & GitHub</h4>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">1. Que fait la commande <code>git init</code> ?</p>
+ <label class="quiz-option"><input type="radio" name="git-q1" value="0"> Elle envoie le code sur GitHub</label>
+ <label class="quiz-option"><input type="radio" name="git-q1" value="1"> Elle initialise un dépôt Git local</label>
+ <label class="quiz-option"><input type="radio" name="git-q1" value="2"> Elle supprime l'historique</label>
+ <label class="quiz-option"><input type="radio" name="git-q1" value="3"> Elle crée un compte GitHub</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">2. Quelle commande envoie les commits locaux vers GitHub ?</p>
+ <label class="quiz-option"><input type="radio" name="git-q2" value="0"> git pull</label>
+ <label class="quiz-option"><input type="radio" name="git-q2" value="1"> git push</label>
+ <label class="quiz-option"><input type="radio" name="git-q2" value="2"> git commit</label>
+ <label class="quiz-option"><input type="radio" name="git-q2" value="3"> git fetch</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">3. A quoi sert le fichier <code>.gitignore</code> ?</p>
+ <label class="quiz-option"><input type="radio" name="git-q3" value="0"> A configurer le nom d'utilisateur</label>
+ <label class="quiz-option"><input type="radio" name="git-q3" value="1"> A exclure certains fichiers/dossiers du suivi Git</label>
+ <label class="quiz-option"><input type="radio" name="git-q3" value="2"> A créer une branche</label>
+ <label class="quiz-option"><input type="radio" name="git-q3" value="3"> A fusionner deux branches</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">4. Quelle commande affiche l'état des fichiers modifiés/non suivis ?</p>
+ <label class="quiz-option"><input type="radio" name="git-q4" value="0"> git log</label>
+ <label class="quiz-option"><input type="radio" name="git-q4" value="1"> git status</label>
+ <label class="quiz-option"><input type="radio" name="git-q4" value="2"> git show</label>
+ <label class="quiz-option"><input type="radio" name="git-q4" value="3"> git branch</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">5. Quelle affirmation est correcte ?</p>
+ <label class="quiz-option"><input type="radio" name="git-q5" value="0"> Git est dans le cloud, GitHub est local</label>
+ <label class="quiz-option"><input type="radio" name="git-q5" value="1"> Git est local, GitHub est le cloud (hébergement des dépôts)</label>
+ <label class="quiz-option"><input type="radio" name="git-q5" value="2"> Git et GitHub sont identiques</label>
+ <label class="quiz-option"><input type="radio" name="git-q5" value="3"> GitHub remplace complètement Git</label>
+ </div>
+ <button class="quiz-check-btn" onclick="checkQuiz('git')">Vérifier mes réponses</button>
+ <div class="quiz-result"></div>
+ </div>
+
+ <div class="info-box">Félicitations ! Tu maîtrises Git, GitHub et le déploiement web.</div>
+ </div></div>
+ </div>
+
+ <!-- MODULE ARCHITECTURE GLOBALE RH -->
+ <div id="architecture-module" class="module">
+ <div class="chapter-card"><div class="card-head"><span class="card-title">ARCHITECTURE GLOBALE - Projet RH Bénin</span><span class="badge">Schéma complet</span></div>
+ <div class="content-pane">
+ <pre style="background:#0f172a; color:#e2e8f0; padding:1.5rem; border-radius:20px; font-family:monospace; overflow-x:auto;">UTILISATEUR FINAL
+ ?
+NAVIGATEUR (Chrome, Firefox, Edge)
+ ?
+FRONTEND (HTML / CSS / JavaScript)
+ ? Requêtes HTTP / API
+BACKEND (Python-Django / Node.js)
+ ?
+BASE DE DONNéES (MySQL)</pre>
+ <div class="info-box">Cette architecture sépare clairement le frontend (visible par l'utilisateur) du backend (logique métier) et de la base de données.</div>
+ <h3>Frontend (HTML/CSS/JS) - Rôles clés</h3>
+ <div class="code-window"><div class="code-header"><span class="lang-label">javascript</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>// Calcul de la paie selon règles béninoises
+function calculatePayroll(salaireBrut) {
+ const cnssEmploye = salaireBrut * 0.045;
+ let irpp = 0;
+ if (salaireBrut > 300000 && salaireBrut <= 1000000) irpp = salaireBrut * 0.05;
+ else if (salaireBrut > 1000000) irpp = salaireBrut * 0.10;
+ return { brut: salaireBrut, cnss: cnssEmploye, irpp, net: salaireBrut - cnssEmploye - irpp };
+}</code></pre></div>
+ <h3>Backend - Django + Node.js</h3>
+ <div class="code-window"><div class="code-header"><span class="lang-label">python</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code># models.py - Définition des tables
+class Employee(models.Model):
+ nom = models.CharField(max_length=100)
+ prenom = models.CharField(max_length=100)
+ cni_number = models.CharField(max_length=50, unique=True)
+ cnss_number = models.CharField(max_length=50, unique=True)
+ salaire_base = models.DecimalField(max_digits=12, decimal_places=2)</code></pre></div>
+
+ <div class="tp-box">
+ <h4>🛠️ TP Architecture : Calcul de paie complet</h4>
+ <span class="tp-meta">Durée estimée : 30-40 min</span>
+ <p><strong>Objectif :</strong> comprendre le rôle du frontend et sécuriser un calcul métier en le rejouant côté backend.</p>
+ <p><strong>Consignes :</strong></p>
+ <ol>
+ <li>Réutilise la fonction <code>calculatePayroll(salaireBrut)</code> côté frontend pour afficher un aperçu instantané à l'utilisateur.</li>
+ <li>Teste-la avec 3 salaires : 250000, 700000 et 1500000. Note le CNSS, l'IRPP et le net pour chacun.</li>
+ <li>écris l'équivalent en Python (fonction <code>calculate_payroll</code>) pour recalculer la paie côté serveur avant sauvegarde.</li>
+ <li>Explique en une phrase pourquoi il ne faut jamais faire confiance uniquement au calcul reçu du frontend.</li>
+ </ol>
+ <div class="tp-result"><strong>Résultat attendu :</strong> les deux fonctions (JS et Python) donnent exactement le même résultat pour les 3 salaires testés.</div>
+ <details><summary>Solution</summary><div class="code-window"><pre><code>def calculate_payroll(salaire_brut):
+ cnss_employe = salaire_brut * 0.045
+ irpp = 0
+ if 300000 < salaire_brut <= 1000000:
+ irpp = salaire_brut * 0.05
+ elif salaire_brut > 1000000:
+ irpp = salaire_brut * 0.10
+ net = salaire_brut - cnss_employe - irpp
+ return {"brut": salaire_brut, "cnss": cnss_employe, "irpp": irpp, "net": net}
+
+for salaire in [250000, 700000, 1500000]:
+ print(calculate_payroll(salaire))</code></pre></div>
+ <p>Le frontend n'est jamais fiable pour la sécurité : un utilisateur peut modifier le JavaScript dans son navigateur. Le backend doit donc toujours revalider/recalculer les données sensibles (paie, prix, permissions) avant de les enregistrer.</p></details>
+ </div>
+
+ <div class="quiz-box" data-quiz="architecture">
+ <h4>🧠 Quiz : Architecture RH</h4>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">1. Dans l'architecture 3-tiers, qui envoie les requêtes HTTP au backend ?</p>
+ <label class="quiz-option"><input type="radio" name="archi-q1" value="0"> La base de données</label>
+ <label class="quiz-option"><input type="radio" name="archi-q1" value="1"> Le frontend</label>
+ <label class="quiz-option"><input type="radio" name="archi-q1" value="2"> Le serveur SQL</label>
+ <label class="quiz-option"><input type="radio" name="archi-q1" value="3"> Le système d'exploitation</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">2. Quel taux de CNSS employé est utilisé dans l'exemple ?</p>
+ <label class="quiz-option"><input type="radio" name="archi-q2" value="0"> 3%</label>
+ <label class="quiz-option"><input type="radio" name="archi-q2" value="1"> 4,5%</label>
+ <label class="quiz-option"><input type="radio" name="archi-q2" value="2"> 5%</label>
+ <label class="quiz-option"><input type="radio" name="archi-q2" value="3"> 10%</label>
+ </div>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">3. A partir de quel salaire le taux IRPP de 10% s'applique-t-il dans l'exemple ?</p>
+ <label class="quiz-option"><input type="radio" name="archi-q3" value="0"> Supérieur à 300 000</label>
+ <label class="quiz-option"><input type="radio" name="archi-q3" value="1"> Supérieur à 500 000</label>
+ <label class="quiz-option"><input type="radio" name="archi-q3" value="2"> Supérieur à 1 000 000</label>
+ <label class="quiz-option"><input type="radio" name="archi-q3" value="3"> Supérieur à 2 000 000</label>
+ </div>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">4. Quel rôle joue MySQL dans cette architecture ?</p>
+ <label class="quiz-option"><input type="radio" name="archi-q4" value="0"> Affichage à l'écran</label>
+ <label class="quiz-option"><input type="radio" name="archi-q4" value="1"> Logique métier</label>
+ <label class="quiz-option"><input type="radio" name="archi-q4" value="2"> Stockage des données</label>
+ <label class="quiz-option"><input type="radio" name="archi-q4" value="3"> Sécurité réseau</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">5. Où doit être revalidé un calcul sensible comme la paie ?</p>
+ <label class="quiz-option"><input type="radio" name="archi-q5" value="0"> Uniquement dans le navigateur</label>
+ <label class="quiz-option"><input type="radio" name="archi-q5" value="1"> Toujours côté backend</label>
+ <label class="quiz-option"><input type="radio" name="archi-q5" value="2"> Dans le fichier CSS</label>
+ <label class="quiz-option"><input type="radio" name="archi-q5" value="3"> Nulle part, le frontend suffit</label>
+ </div>
+ <button class="quiz-check-btn" onclick="checkQuiz('architecture')">Vérifier mes réponses</button>
+ <div class="quiz-result"></div>
+ </div>
+ </div></div>
+ </div>
+
+ <!-- MODULE PHASES 1 - 8 PROJET RH -->
+ <div id="phases-module" class="module">
+ <div class="chapter-card"><div class="card-head"><span class="card-title">PROJET RH BéNIN - Phases 1 - 8 (Guide complet)</span><span class="badge">Débutant absolu ? Application fonctionnelle</span></div>
+ <div class="content-pane">
+ <h2>PHASE 1: PREPARATION (Jour 1)</h2>
+ <p><strong>étape 1.1:</strong> Crée un dossier <code>rh_software</code> sur le bureau.<br>
+ <strong>étape 1.2:</strong> Ouvre le dossier dans VS Code (Fichier > Ouvrir le dossier).<br>
+ <strong>étape 1.3:</strong> Crée <code>cahier_charges.txt</code> avec les pages : Connexion, Tableau de bord, Employés, Contrats, Paie.</p>
+ 
+ <h2>PHASE 2: INSTALLATION DES OUTILS (Jour 2)</h2>
+ <p>Installe VS Code (code.visualstudio.com) et Python (python.org) <strong>en cochant "Add python.exe to PATH"</strong>. Vérifie avec <code>python --version</code> et <code>pip --version</code>.</p>
+ 
+ <h2>PHASE 3 & 4: DJANGO - premier projet</h2>
+ <div class="code-window"><pre><code>cd Desktop/rh_software
+python -m venv venv
+venv\Scripts\activate # Windows
+pip install django
+django-admin startproject rh_benin
+cd rh_benin
+python manage.py runserver # ? http://127.0.0.1:8000</code></pre></div>
+ 
+ <h2>PHASE 5 & 6: Créer l'app "employees" et le modèle</h2>
+ <div class="code-window"><pre><code>python manage.py startapp employees
+# Ajouter 'employees' dans INSTALLED_APPS de settings.py
+python manage.py makemigrations employees
+python manage.py migrate</code></pre></div>
+ <div class="code-window"><div class="code-header"><span class="lang-label">models.py</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>from django.db import models
+
+class Employee(models.Model):
+ first_name = models.CharField(max_length=100)
+ last_name = models.CharField(max_length=100)
+ email = models.EmailField(unique=True)
+ phone = models.CharField(max_length=20)
+ position = models.CharField(max_length=100)
+ department = models.CharField(max_length=100)
+ salary = models.DecimalField(max_digits=12, decimal_places=2)
+ hire_date = models.DateField()
+ birth_date = models.DateField()
+ is_active = models.BooleanField(default=True)
+ photo = models.ImageField(upload_to='photos/', blank=True, null=True)
+
+ def __str__(self):
+ return f"{self.first_name} {self.last_name}"</code></pre></div>
+ 
+ <h2>PHASE 7: Interface admin</h2>
+ <p><code>python manage.py createsuperuser</code> (admin/admin123). Puis <code>python manage.py runserver</code> et accès - <code>/admin</code>.</p>
+ 
+ <h2>PHASE 8: Premieres pages web (vues, templates, URLs)</h2>
+ <p>Créer <code>employees/views.py</code> avec home, employee_list, employee_detail. Créer dossier <code>templates/employees/</code> avec base.html, home.html, list.html, detail.html. Configurer <code>employees/urls.py</code> et inclure dans <code>rh_benin/urls.py</code>. Configurer médias et statiques.</p>
+ <div class="code-window"><div class="code-header"><span class="lang-label">views.py</span><button class="copy-code" onclick="copyCodeBlock(this)">Copier</button></div>
+ <pre><code>from django.shortcuts import render, get_object_or_404
+from .models import Employee
+
+def home(request):
+ return render(request, 'employees/home.html')
+
+def employee_list(request):
+ employees = Employee.objects.filter(is_active=True)
+ return render(request, 'employees/list.html', {'employees': employees})
+
+def employee_detail(request, pk):
+ employee = get_object_or_404(Employee, pk=pk)
+ return render(request, 'employees/detail.html', {'employee': employee})</code></pre></div>
+ <div class="info-box">A la fin de la phase 8, vous avez : serveur Django, base de données, admin, page d'accueil, liste des employés, fiche détail, recherche, design responsive.</div>
+ <div class="exercise-box"><h4>Récapitulatif final - Projet RH Bénin</h4>
+ <p>- Serveur Django fonctionnel<br>- Table Employee + migrations<br>- Interface admin en français<br>- 3 pages web dynamiques<br>- Design professionnel<br>- Pret pour les modules Paie, Contrats, Node.js</p>
+ <details><summary>Etapes suivantes (Extensions)</summary><p>- Module Paie avec calcul CNSS/IRPP<br>- Dashboard avec graphiques (Chart.js)<br>- Notifications temps réel via Node.js + Socket.io<br>- Export Excel/PDF des bulletins</p></details>
+ </div>
+
+ <div class="tp-box">
+ <h4>🛠️ TP Projet RH : Lancer le projet et afficher les employés</h4>
+ <span class="tp-meta">Durée estimée : 90-120 min (projet fil rouge)</span>
+ <p><strong>Objectif :</strong> réaliser concrètement les phases 1 à 8 pour obtenir une application Django fonctionnelle avec au moins 3 employés visibles en ligne.</p>
+ <p><strong>Consignes :</strong></p>
+ <ol>
+ <li>Crée le dossier <code>rh_software</code> et ouvre-le dans VS Code (Phase 1).</li>
+ <li>Installe VS Code et Python, vérifie <code>python --version</code> (Phase 2).</li>
+ <li>Crée un environnement virtuel, installe Django et lance <code>django-admin startproject rh_benin</code> (Phase 3-4).</li>
+ <li>Crée l'app <code>employees</code>, ajoute le modèle <code>Employee</code>, migre la base (Phase 5-6).</li>
+ <li>Crée un superutilisateur et ajoute 3 employés via l'admin (Phase 7).</li>
+ <li>écris les vues <code>home</code>, <code>employee_list</code>, <code>employee_detail</code> et leurs templates/URLs (Phase 8).</li>
+ </ol>
+ <div class="tp-result"><strong>Résultat attendu :</strong> <code>python manage.py runserver</code> démarre sans erreur, <code>/admin</code> permet de gérer les employés, et <code>/employees/</code> affiche la liste des 3 employés créés.</div>
+ <details><summary>Checklist de vérification</summary><p>☐ Serveur démarre sans erreur<br>☐ Migrations appliquées sans erreur<br>☐ Superutilisateur créé et connexion admin OK<br>☐ 3 employés visibles dans l'admin<br>☐ Page <code>/employees/</code> affiche la liste<br>☐ Page détail accessible pour un employé</p></details>
+ </div>
+
+ <div class="quiz-box" data-quiz="phases">
+ <h4>🧠 Quiz : Projet RH (Phases 1-8)</h4>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">1. Que fait <code>python manage.py startapp employees</code> ?</p>
+ <label class="quiz-option"><input type="radio" name="phases-q1" value="0"> Elle démarre le serveur</label>
+ <label class="quiz-option"><input type="radio" name="phases-q1" value="1"> Elle crée une nouvelle application Django nommée "employees"</label>
+ <label class="quiz-option"><input type="radio" name="phases-q1" value="2"> Elle installe Django</label>
+ <label class="quiz-option"><input type="radio" name="phases-q1" value="3"> Elle crée la base de données</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">2. Quelle commande crée le compte administrateur ?</p>
+ <label class="quiz-option"><input type="radio" name="phases-q2" value="0"> python manage.py migrate</label>
+ <label class="quiz-option"><input type="radio" name="phases-q2" value="1"> python manage.py createsuperuser</label>
+ <label class="quiz-option"><input type="radio" name="phases-q2" value="2"> python manage.py adduser</label>
+ <label class="quiz-option"><input type="radio" name="phases-q2" value="3"> django-admin admin</label>
+ </div>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">3. Que faut-il faire dans <code>settings.py</code> après avoir créé une app ?</p>
+ <label class="quiz-option"><input type="radio" name="phases-q3" value="0"> Rien, c'est automatique</label>
+ <label class="quiz-option"><input type="radio" name="phases-q3" value="1"> Supprimer INSTALLED_APPS</label>
+ <label class="quiz-option"><input type="radio" name="phases-q3" value="2"> Ajouter l'app dans INSTALLED_APPS</label>
+ <label class="quiz-option"><input type="radio" name="phases-q3" value="3"> Modifier urls.py uniquement</label>
+ </div>
+ <div class="quiz-question" data-correct="2">
+ <p class="q-text">4. A quelle phase crée-t-on le modèle <code>Employee</code> ?</p>
+ <label class="quiz-option"><input type="radio" name="phases-q4" value="0"> Phase 1</label>
+ <label class="quiz-option"><input type="radio" name="phases-q4" value="1"> Phase 2</label>
+ <label class="quiz-option"><input type="radio" name="phases-q4" value="2"> Phase 5-6</label>
+ <label class="quiz-option"><input type="radio" name="phases-q4" value="3"> Phase 8</label>
+ </div>
+ <div class="quiz-question" data-correct="1">
+ <p class="q-text">5. A quoi servent <code>makemigrations</code> puis <code>migrate</code> ?</p>
+ <label class="quiz-option"><input type="radio" name="phases-q5" value="0"> Démarrer le serveur</label>
+ <label class="quiz-option"><input type="radio" name="phases-q5" value="1"> Générer puis appliquer les changements de modèles dans la base de données</label>
+ <label class="quiz-option"><input type="radio" name="phases-q5" value="2"> Créer l'interface admin</label>
+ <label class="quiz-option"><input type="radio" name="phases-q5" value="3"> Installer Django</label>
+ </div>
+ <button class="quiz-check-btn" onclick="checkQuiz('phases')">Vérifier mes réponses</button>
+ <div class="quiz-result"></div>
+ </div>
+ </div></div>
+ </div>
+
+ <footer>
+ <p>Formation complete : Python, Django, JavaScript, Node.js, MySQL, Git/GitHub + Projet RH Benin (Architecture & 8 phases) - concu pour les debutants absolus.</p>
+ <p>Chaque module contient des exemples concrets, exercices pratiques et une progression pas - pas vers une application professionnelle.</p>
+ </footer>
+</div>
+
+<script>
+ // Navigation entre modules
+ const tabs = document.querySelectorAll('.tab-btn');
+ const modules = {
+ python: document.getElementById('python-module'),
+ django: document.getElementById('django-module'),
+ javascript: document.getElementById('javascript-module'),
+ nodejs: document.getElementById('nodejs-module'),
+ mysql: document.getElementById('mysql-module'),
+ git: document.getElementById('git-module'),
+ architecture: document.getElementById('architecture-module'),
+ phases: document.getElementById('phases-module')
+ };
+
+ function activateModule(moduleId) {
+ Object.values(modules).forEach(mod => mod.classList.remove('active-module'));
+ if (modules[moduleId]) modules[moduleId].classList.add('active-module');
+ tabs.forEach(btn => {
+ btn.classList.remove('active');
+ if (btn.getAttribute('data-module') === moduleId) btn.classList.add('active');
+ });
+ }
+
+ tabs.forEach(btn => {
+ btn.addEventListener('click', () => {
+ const moduleKey = btn.getAttribute('data-module');
+ if (moduleKey) activateModule(moduleKey);
+ });
+ });
+
+ // Copier code
+ window.copyCodeBlock = function(btnElement) {
+ const codeWindow = btnElement.closest('.code-window');
+ const pre = codeWindow.querySelector('pre');
+ const text = pre.innerText;
+ navigator.clipboard.writeText(text);
+ const originalText = btnElement.innerText;
+ btnElement.innerText = 'Copié !';
+ setTimeout(() => btnElement.innerText = originalText, 1500);
+ };
+
+ // Correction des quiz
+ window.checkQuiz = function(quizId) {
+ const quizBox = document.querySelector('.quiz-box[data-quiz="' + quizId + '"]');
+ if (!quizBox) return;
+ const questions = quizBox.querySelectorAll('.quiz-question');
+ let score = 0;
+ questions.forEach(function(q) {
+ const correctIndex = parseInt(q.getAttribute('data-correct'), 10);
+ const options = q.querySelectorAll('.quiz-option');
+ const selected = q.querySelector('input[type="radio"]:checked');
+ options.forEach(function(opt, i) {
+ opt.classList.remove('correct-answer', 'wrong-answer');
+ if (i === correctIndex) opt.classList.add('correct-answer');
+ });
+ if (selected) {
+ const selectedIndex = parseInt(selected.value, 10);
+ if (selectedIndex === correctIndex) {
+ score++;
+ } else {
+ selected.closest('.quiz-option').classList.add('wrong-answer');
+ }
+ }
+ });
+ const total = questions.length;
+ const resultDiv = quizBox.querySelector('.quiz-result');
+ resultDiv.style.display = 'block';
+ resultDiv.textContent = 'Score : ' + score + ' / ' + total + (score === total ? ' - Excellent !' : score >= total / 2 ? ' - Bien, continue !' : ' - Revois le cours et réessaie.');
+ resultDiv.style.background = score === total ? '#dcfce7' : (score >= total / 2 ? '#fef9c3' : '#fee2e2');
+ resultDiv.style.color = score === total ? '#166534' : (score >= total / 2 ? '#854d0e' : '#991b1b');
+ };
+</script>
+<button id="globalBackBtn" aria-label="Retour au portail" onclick="window.location.href='index.html'">Retour au portail</button>
+<style>
+#globalBackBtn{position:fixed;right:16px;bottom:16px;z-index:9999;background:#0033BB;color:#fff;border:none;border-radius:999px;padding:12px 16px;font:600 14px/1.2 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 8px 20px rgba(0,0,0,.2);cursor:pointer}
+#globalBackBtn:hover{background:#002a96}
+#globalBackBtn:focus{outline:3px solid #FFB703;outline-offset:2px}
+@media (max-width:640px){#globalBackBtn{right:12px;bottom:12px;padding:10px 14px;font-size:13px}}
+</style>
+<script src="offres_ppt_content.js"></script>
+<script src="offres_pdf_content.js"></script>
+<script src="formation_complements.js"></script>
+<script src="formations_enrichment.js"></script>
+<script src="site-uniformization.js"></script>
+</body>
+</html>
+

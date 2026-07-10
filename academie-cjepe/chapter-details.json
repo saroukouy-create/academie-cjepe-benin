@@ -1,0 +1,902 @@
+[
+  {
+    "track": "web",
+    "module": "Module 0 · Comprendre le Web",
+    "chapter": "Comment fonctionne Internet ?",
+    "words": 293,
+    "codes": 1,
+    "callouts": 2,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 0 · Comprendre le Web",
+    "chapter": "Les trois piliers : HTML, CSS, JavaScript",
+    "words": 180,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 0 · Comprendre le Web",
+    "chapter": "Installer son environnement de travail",
+    "words": 165,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 1 · HTML — Le squelette du Web",
+    "chapter": "La structure d'une page HTML",
+    "words": 109,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 1 · HTML — Le squelette du Web",
+    "chapter": "Titres, paragraphes et mise en valeur du texte",
+    "words": 202,
+    "codes": 4,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 1 · HTML — Le squelette du Web",
+    "chapter": "Liens et médias : <a>, <img>, <video>",
+    "words": 123,
+    "codes": 3,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 1 · HTML — Le squelette du Web",
+    "chapter": "Listes et tableaux",
+    "words": 80,
+    "codes": 3,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 1 · HTML — Le squelette du Web",
+    "chapter": "Les formulaires",
+    "words": 122,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 1 · HTML — Le squelette du Web",
+    "chapter": "Sémantique, accessibilité et bonnes pratiques",
+    "words": 132,
+    "codes": 3,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 2 · CSS — L'apparence",
+    "chapter": "Où et comment écrire le CSS",
+    "words": 158,
+    "codes": 5,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 2 · CSS — L'apparence",
+    "chapter": "Couleurs, texte et le modèle de boîte",
+    "words": 95,
+    "codes": 2,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 2 · CSS — L'apparence",
+    "chapter": "Unités et positionnement",
+    "words": 116,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 2 · CSS — L'apparence",
+    "chapter": "Flexbox et Grid — la mise en page moderne",
+    "words": 113,
+    "codes": 2,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 2 · CSS — L'apparence",
+    "chapter": "Responsive design et effets",
+    "words": 88,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 3 · JavaScript — L'interactivité",
+    "chapter": "Variables, types et opérations",
+    "words": 87,
+    "codes": 3,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 3 · JavaScript — L'interactivité",
+    "chapter": "Conditions et boucles",
+    "words": 61,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 3 · JavaScript — L'interactivité",
+    "chapter": "Les fonctions",
+    "words": 51,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 3 · JavaScript — L'interactivité",
+    "chapter": "Le DOM : manipuler le HTML depuis JavaScript",
+    "words": 74,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 3 · JavaScript — L'interactivité",
+    "chapter": "Événements et formulaires",
+    "words": 82,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 3 · JavaScript — L'interactivité",
+    "chapter": "Tableaux, objets et JavaScript moderne",
+    "words": 102,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 3 · JavaScript — L'interactivité",
+    "chapter": "Mini-projets guidés",
+    "words": 137,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 4 · Git & GitHub — Versionner et publier",
+    "chapter": "Pourquoi Git ? Git contre GitHub",
+    "words": 115,
+    "codes": 0,
+    "callouts": 2,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 4 · Git & GitHub — Versionner et publier",
+    "chapter": "Installer et configurer Git",
+    "words": 81,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 4 · Git & GitHub — Versionner et publier",
+    "chapter": "Créer un projet et les premières commandes",
+    "words": 81,
+    "codes": 3,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 4 · Git & GitHub — Versionner et publier",
+    "chapter": "Publier son projet sur GitHub",
+    "words": 80,
+    "codes": 1,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 4 · Git & GitHub — Versionner et publier",
+    "chapter": "Mettre à jour le projet et .gitignore",
+    "words": 89,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 4 · Git & GitHub — Versionner et publier",
+    "chapter": "Déployer avec GitHub Pages",
+    "words": 82,
+    "codes": 0,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 5 · Langage C — Comprendre la machine",
+    "chapter": "Pourquoi le C ? Installer les outils",
+    "words": 132,
+    "codes": 0,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 5 · Langage C — Comprendre la machine",
+    "chapter": "Premier programme et variables",
+    "words": 181,
+    "codes": 5,
+    "callouts": 1,
+    "tables": 2
+  },
+  {
+    "track": "web",
+    "module": "Module 5 · Langage C — Comprendre la machine",
+    "chapter": "Conditions, boucles et fonctions",
+    "words": 81,
+    "codes": 4,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 5 · Langage C — Comprendre la machine",
+    "chapter": "Tableaux, structures et architecture d'un projet",
+    "words": 78,
+    "codes": 4,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 5 · Langage C — Comprendre la machine",
+    "chapter": "Mini-projet : gestion d'un employé",
+    "words": 96,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 6 · Python — Les bases de la programmation",
+    "chapter": "Découvrir Python et l'installer",
+    "words": 65,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 6 · Python — Les bases de la programmation",
+    "chapter": "Variables, types et opérateurs",
+    "words": 58,
+    "codes": 1,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 6 · Python — Les bases de la programmation",
+    "chapter": "Conditions et boucles",
+    "words": 47,
+    "codes": 3,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 6 · Python — Les bases de la programmation",
+    "chapter": "Listes, tuples et dictionnaires",
+    "words": 81,
+    "codes": 3,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 6 · Python — Les bases de la programmation",
+    "chapter": "Les fonctions",
+    "words": 40,
+    "codes": 1,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 6 · Python — Les bases de la programmation",
+    "chapter": "Programmation orientée objet (POO)",
+    "words": 88,
+    "codes": 1,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 6 · Python — Les bases de la programmation",
+    "chapter": "Fichiers et gestion des erreurs",
+    "words": 85,
+    "codes": 2,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 7 · Django — Applications web avec Python",
+    "chapter": "Qu'est-ce que Django ? L'architecture MTV",
+    "words": 88,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 7 · Django — Applications web avec Python",
+    "chapter": "Installer Django et créer son premier projet",
+    "words": 56,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 7 · Django — Applications web avec Python",
+    "chapter": "Modèles et base de données",
+    "words": 133,
+    "codes": 3,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 7 · Django — Applications web avec Python",
+    "chapter": "Vues, URLs et templates",
+    "words": 104,
+    "codes": 3,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 7 · Django — Applications web avec Python",
+    "chapter": "Formulaires et authentification",
+    "words": 122,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 8 · Node.js — JavaScript côté serveur",
+    "chapter": "Qu'est-ce que Node.js ? Installer et npm",
+    "words": 54,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 8 · Node.js — JavaScript côté serveur",
+    "chapter": "Modules et création d'un serveur",
+    "words": 147,
+    "codes": 2,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 8 · Node.js — JavaScript côté serveur",
+    "chapter": "API REST et base de données",
+    "words": 157,
+    "codes": 2,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 9 · Projet fil rouge — Le Logiciel RH du Bénin",
+    "chapter": "Le projet et son architecture globale",
+    "words": 171,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 9 · Projet fil rouge — Le Logiciel RH du Bénin",
+    "chapter": "Le même concept, quatre langages",
+    "words": 137,
+    "codes": 3,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "web",
+    "module": "Module 9 · Projet fil rouge — Le Logiciel RH du Bénin",
+    "chapter": "La base de données du projet",
+    "words": 266,
+    "codes": 3,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 9 · Projet fil rouge — Le Logiciel RH du Bénin",
+    "chapter": "Comment tout communique : trois scénarios",
+    "words": 309,
+    "codes": 3,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 9 · Projet fil rouge — Le Logiciel RH du Bénin",
+    "chapter": "Construire pas à pas : le modèle Employé",
+    "words": 262,
+    "codes": 4,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "web",
+    "module": "Module 9 · Projet fil rouge — Le Logiciel RH du Bénin",
+    "chapter": "Bilan et prochaines étapes",
+    "words": 143,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "cyber",
+    "module": "Module 0 · Introduction",
+    "chapter": "Bienvenue dans ce cours de cybersécurité",
+    "words": 118,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "cyber",
+    "module": "Module 1 · Les fondamentaux",
+    "chapter": "Chapitre 1 — Qu'est-ce que la cybersécurité ?",
+    "words": 103,
+    "codes": 0,
+    "callouts": 2,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 1 · Les fondamentaux",
+    "chapter": "Chapitre 2 — Qu'est-ce qu'une donnée ?",
+    "words": 63,
+    "codes": 0,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 1 · Les fondamentaux",
+    "chapter": "Chapitre 3 — Les types de données",
+    "words": 64,
+    "codes": 0,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 1 · Les fondamentaux",
+    "chapter": "Chapitre 4 — Les risques sur les données",
+    "words": 90,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 1 · Les fondamentaux",
+    "chapter": "Chapitre 5 — La maintenance des données",
+    "words": 132,
+    "codes": 0,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "cyber",
+    "module": "Module 2 · Sécuriser son réseau et sa vie privée",
+    "chapter": "Chapitre 6 — Protection des données et du réseau",
+    "words": 162,
+    "codes": 0,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 2 · Sécuriser son réseau et sa vie privée",
+    "chapter": "Chapitre 7 — Protéger sa confidentialité en ligne",
+    "words": 174,
+    "codes": 0,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 2 · Sécuriser son réseau et sa vie privée",
+    "chapter": "Chapitre 8 — La navigation sur Internet",
+    "words": 180,
+    "codes": 1,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 2 · Sécuriser son réseau et sa vie privée",
+    "chapter": "Chapitre 13 — L'adresse IP",
+    "words": 201,
+    "codes": 1,
+    "callouts": 2,
+    "tables": 2
+  },
+  {
+    "track": "cyber",
+    "module": "Module 2 · Sécuriser son réseau et sa vie privée",
+    "chapter": "Chapitre 14 — Ports réseau et scan de ports",
+    "words": 224,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 2
+  },
+  {
+    "track": "cyber",
+    "module": "Module 2 · Sécuriser son réseau et sa vie privée",
+    "chapter": "Chapitre 12 — Les appliances de sécurité",
+    "words": 169,
+    "codes": 0,
+    "callouts": 2,
+    "tables": 0
+  },
+  {
+    "track": "cyber",
+    "module": "Module 3 · Comprendre les menaces",
+    "chapter": "Chapitre 9 — Vulnérabilité, exploit, attaque",
+    "words": 177,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 2
+  },
+  {
+    "track": "cyber",
+    "module": "Module 3 · Comprendre les menaces",
+    "chapter": "Chapitre 10 — Les malwares et leurs symptômes",
+    "words": 229,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 3 · Comprendre les menaces",
+    "chapter": "Chapitre 15 — Le déroulement d'une cyberattaque",
+    "words": 225,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 2
+  },
+  {
+    "track": "cyber",
+    "module": "Module 3 · Comprendre les menaces",
+    "chapter": "Chapitre 16 — La sécurité comportementale",
+    "words": 325,
+    "codes": 0,
+    "callouts": 2,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 4 · Se défendre au quotidien",
+    "chapter": "Chapitre 11 — Les mots de passe : ta première ligne de défense",
+    "words": 295,
+    "codes": 2,
+    "callouts": 2,
+    "tables": 2
+  },
+  {
+    "track": "cyber",
+    "module": "Module 4 · Se défendre au quotidien",
+    "chapter": "Chapitre 17 — Guide sur la sécurité : checklist opérationnelle",
+    "words": 191,
+    "codes": 0,
+    "callouts": 0,
+    "tables": 2
+  },
+  {
+    "track": "cyber",
+    "module": "Module 4 · Se défendre au quotidien",
+    "chapter": "Chapitre 18 — Les outils de prévention et de détection",
+    "words": 154,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 2
+  },
+  {
+    "track": "cyber",
+    "module": "Module 4 · Se défendre au quotidien",
+    "chapter": "Chapitre 19 — L'hygiène informatique au quotidien",
+    "words": 134,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 4 · Se défendre au quotidien",
+    "chapter": "Chapitre 20 — La veille en sécurité",
+    "words": 116,
+    "codes": 0,
+    "callouts": 0,
+    "tables": 1
+  },
+  {
+    "track": "cyber",
+    "module": "Module 5 · Conclusion et feuille de route",
+    "chapter": "Ton parcours de progression sur 3 mois",
+    "words": 259,
+    "codes": 0,
+    "callouts": 2,
+    "tables": 0
+  },
+  {
+    "track": "lab",
+    "module": "Module 1 · Comprendre la virtualisation",
+    "chapter": "Qu'est-ce que VirtualBox ?",
+    "words": 243,
+    "codes": 0,
+    "callouts": 3,
+    "tables": 2
+  },
+  {
+    "track": "lab",
+    "module": "Module 2 · Installer Kali Linux dans VirtualBox",
+    "chapter": "Installer Kali Linux, étape par étape",
+    "words": 311,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "lab",
+    "module": "Module 3 · Prise en main de Kali Linux",
+    "chapter": "Les commandes de base dans Kali",
+    "words": 180,
+    "codes": 1,
+    "callouts": 0,
+    "tables": 5
+  },
+  {
+    "track": "lab",
+    "module": "Module 3 · Prise en main de Kali Linux",
+    "chapter": "Configurer Internet, capturer l'écran, partager un dossier",
+    "words": 185,
+    "codes": 3,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "lab",
+    "module": "Module 4 · Hacking éthique — les fondamentaux",
+    "chapter": "Qu'est-ce que le hacking éthique ?",
+    "words": 267,
+    "codes": 0,
+    "callouts": 3,
+    "tables": 3
+  },
+  {
+    "track": "lab",
+    "module": "Module 5 · Premier labo pratique guidé",
+    "chapter": "Ton laboratoire de pentest isolé",
+    "words": 339,
+    "codes": 4,
+    "callouts": 2,
+    "tables": 1
+  },
+  {
+    "track": "design",
+    "module": "Module 0 · Introduction",
+    "chapter": "Pourquoi un développeur doit comprendre le webdesign",
+    "words": 179,
+    "codes": 0,
+    "callouts": 2,
+    "tables": 0
+  },
+  {
+    "track": "design",
+    "module": "Module 1 · Les fondamentaux visuels",
+    "chapter": "La couleur : construire une palette qui fonctionne",
+    "words": 269,
+    "codes": 1,
+    "callouts": 2,
+    "tables": 2
+  },
+  {
+    "track": "design",
+    "module": "Module 1 · Les fondamentaux visuels",
+    "chapter": "La typographie : hiérarchie et lisibilité",
+    "words": 205,
+    "codes": 1,
+    "callouts": 0,
+    "tables": 0
+  },
+  {
+    "track": "design",
+    "module": "Module 1 · Les fondamentaux visuels",
+    "chapter": "Espacement, alignement et la grille invisible",
+    "words": 189,
+    "codes": 1,
+    "callouts": 2,
+    "tables": 1
+  },
+  {
+    "track": "design",
+    "module": "Module 2 · Penser UX avant l'écran",
+    "chapter": "Personas et parcours utilisateur",
+    "words": 226,
+    "codes": 1,
+    "callouts": 2,
+    "tables": 0
+  },
+  {
+    "track": "design",
+    "module": "Module 2 · Penser UX avant l'écran",
+    "chapter": "Wireframes et hiérarchie de l'information",
+    "words": 176,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "design",
+    "module": "Module 2 · Penser UX avant l'écran",
+    "chapter": "Principes d'utilisabilité",
+    "words": 204,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "design",
+    "module": "Module 3 · Mise en page et grilles",
+    "chapter": "La grille 12 colonnes et le responsive",
+    "words": 148,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 2
+  },
+  {
+    "track": "design",
+    "module": "Module 3 · Mise en page et grilles",
+    "chapter": "Mobile-first : concevoir du petit vers le grand",
+    "words": 205,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "design",
+    "module": "Module 3 · Mise en page et grilles",
+    "chapter": "Atomic Design : construire par briques",
+    "words": 203,
+    "codes": 0,
+    "callouts": 2,
+    "tables": 1
+  },
+  {
+    "track": "design",
+    "module": "Module 4 · Figma pour développeurs",
+    "chapter": "Découvrir l'interface Figma",
+    "words": 169,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "design",
+    "module": "Module 4 · Figma pour développeurs",
+    "chapter": "Composants et Auto Layout",
+    "words": 163,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "design",
+    "module": "Module 4 · Figma pour développeurs",
+    "chapter": "Prototyper une interface",
+    "words": 134,
+    "codes": 0,
+    "callouts": 2,
+    "tables": 0
+  },
+  {
+    "track": "design",
+    "module": "Module 4 · Figma pour développeurs",
+    "chapter": "Le mode Dev : lire une maquette et en extraire le code",
+    "words": 201,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "design",
+    "module": "Module 4 · Figma pour développeurs",
+    "chapter": "Fiche pratique : prendre Figma en main pas à pas",
+    "words": 577,
+    "codes": 0,
+    "callouts": 2,
+    "tables": 1
+  },
+  {
+    "track": "design",
+    "module": "Module 5 · Design systems et accessibilité",
+    "chapter": "Les tokens de design",
+    "words": 152,
+    "codes": 1,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "design",
+    "module": "Module 5 · Design systems et accessibilité",
+    "chapter": "Construire des composants réutilisables",
+    "words": 172,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 1
+  },
+  {
+    "track": "design",
+    "module": "Module 5 · Design systems et accessibilité",
+    "chapter": "Accessibilité : concevoir pour tout le monde",
+    "words": 237,
+    "codes": 0,
+    "callouts": 1,
+    "tables": 0
+  },
+  {
+    "track": "design",
+    "module": "Module 6 · Projet pratique",
+    "chapter": "Du wireframe à la page en ligne",
+    "words": 454,
+    "codes": 2,
+    "callouts": 2,
+    "tables": 0
+  }
+]

@@ -35,6 +35,17 @@ function table(head,rows){
 function checklist(items){
   return '<ul class="checklist">'+items.map(i=>'<li>'+mdlite(i)+'</li>').join('')+'</ul>';
 }
+function tp(title,meta,objectif,consignes,resultat){
+  return '<div class="tp-block"><div class="tp-head"><span class="tp-flag">TP</span><h4>'+esc(title)+'</h4></div>'+
+    '<span class="tp-meta">'+esc(meta)+'</span>'+
+    '<p><strong>Objectif :</strong> '+mdlite(objectif)+'</p>'+
+    '<p><strong>Consignes :</strong></p>'+ul(consignes,true)+
+    '<div class="tp-result"><strong>Résultat attendu :</strong> '+mdlite(resultat)+'</div>'+
+  '</div>';
+}
+function solution(bodyHtml){
+  return '<details class="solution-block"><summary>Voir une solution possible</summary>'+bodyHtml+'</details>';
+}
 function code(lang,src,label){
   src = src.replace(/^\n/,'').replace(/\n+$/,'');
   return '<div class="codeblock" data-lang="'+lang+'"><div class="codeblock-bar"><span>'+esc(label||lang)+'</span>'+
@@ -413,13 +424,29 @@ const WEB_M3 = {
         h3("3. Liste de tâches (To-do list)") +
         p("Un champ texte + un bouton \"Ajouter\". Chaque clic crée un `<li>` avec le texte saisi et l'ajoute à un `<ul>` grâce à `appendChild`. Ajoute un bouton \"Supprimer\" sur chaque tâche.") +
         callout('astuce',"Bonnes pratiques JavaScript", ["Toujours utiliser `defer` sur la balise `<script>`","Séparer HTML, CSS et JS dans des fichiers différents","Commenter le code pour expliquer le **pourquoi**, pas le **quoi**"])
+    },
+    { id:'w3-8', title:"TP : Formulaire de contact validé",
+      body:
+        tp("Formulaire de contact validé", "Durée estimée : 40-50 min",
+          "manipuler le DOM et les événements pour valider un formulaire côté client.",
+          [
+            "Crée un formulaire HTML avec deux champs : `nom` et `email`, et un bouton \"Envoyer\".",
+            "Écoute l'événement `submit` du formulaire en JavaScript.",
+            "Empêche l'envoi par défaut avec `event.preventDefault()`.",
+            "Vérifie que le champ `nom` n'est pas vide et que l'email contient un `@`.",
+            "Affiche un message de succès ou d'erreur dans une zone `<div id=\"message\">`."
+          ],
+          "si les champs sont valides, un message \"Merci [nom], formulaire envoyé !\" s'affiche en vert. Sinon, un message d'erreur s'affiche en rouge."
+        ) +
+        solution(code('js', 'const form = document.getElementById("contactForm");\nconst message = document.getElementById("message");\n\nform.addEventListener("submit", (event) => {\n  event.preventDefault();\n  const nom = document.getElementById("nom").value.trim();\n  const email = document.getElementById("email").value.trim();\n\n  if (nom === "" || !email.includes("@")) {\n    message.textContent = "Erreur : vérifie le nom et l\'email.";\n    message.style.color = "red";\n    return;\n  }\n\n  message.textContent = `Merci ${nom}, formulaire envoyé !`;\n  message.style.color = "green";\n});'))
     }
   ],
   quiz:[
     {q:"Quelle est la différence entre let et const ?", options:["Aucune différence","let est pour les nombres, const pour le texte","const ne peut plus être réassignée après sa création","let est plus rapide"], correct:2},
     {q:"Que fait document.querySelector(\"h1\") ?", options:["Il crée un nouveau titre","Il sélectionne le premier élément <h1> de la page","Il supprime le titre","Il compte les titres"], correct:1},
     {q:"À quoi sert e.preventDefault() sur un formulaire ?", options:["À vider le formulaire","À empêcher le rechargement automatique de la page à la soumission","À valider automatiquement les champs","À fermer la page"], correct:1},
-    {q:"Quel mot-clé écoute un clic sur un bouton ?", options:["onClick()","listenEvent()","addEventListener(\"click\", ...)","watch(\"click\")"], correct:2}
+    {q:"Quel mot-clé écoute un clic sur un bouton ?", options:["onClick()","listenEvent()","addEventListener(\"click\", ...)","watch(\"click\")"], correct:2},
+    {q:"Quelle syntaxe est un template literal en JavaScript ?", options:["\"texte\" + variable","'texte'","`texte ${variable}`","texte(variable)"], correct:2}
   ]
 };
 
@@ -493,13 +520,29 @@ const WEB_M4 = {
         p("Ton site devient accessible à une adresse du type `https://ton-nom.github.io/mon-site/`.") +
         h3("Projet final du module") +
         p("Crée un site vitrine ou un portfolio avec ce que tu as appris (modules 1 à 3), publie-le sur GitHub, puis déploie-le avec GitHub Pages. Tu sais maintenant utiliser Git, GitHub, et mettre un site en ligne — la base de tout développeur web.")
+    },
+    { id:'w4-7', title:"TP : Projet final - Site vitrine déployé",
+      body:
+        tp("Projet final - Site vitrine déployé", "Durée estimée : 45-60 min",
+          "versionner un mini-site avec Git et le publier en ligne via GitHub Pages.",
+          [
+            "Crée un dossier `mon-site` contenant `index.html`, `style.css` et `script.js` (CV ou portfolio simple).",
+            "Initialise Git avec `git init` puis fais un premier commit (`git add .` + `git commit`).",
+            "Crée un dépôt vide sur GitHub, relie-le avec `git remote add origin ...` et pousse avec `git push -u origin main`.",
+            "Modifie une section du site (ex : ajoute une section \"Contact\"), commit puis push à nouveau.",
+            "Active GitHub Pages (Settings > Pages > branch main) et récupère le lien public."
+          ],
+          "le site est visible publiquement à l'adresse https://ton-compte.github.io/mon-site/, avec au moins 2 commits dans l'historique."
+        ) +
+        solution(checklist(["Dossier avec index.html, CSS et JS","git init + add + commit","Dépôt GitHub créé puis git push","Une modification, un second commit, un second push","GitHub Pages activé et lien public vérifié dans le navigateur"]))
     }
   ],
   quiz:[
     {q:"Quelle commande crée un point de sauvegarde dans l'historique Git ?", options:["git save","git commit -m \"...\"","git push","git backup"], correct:1},
     {q:"Quelle est la différence entre Git et GitHub ?", options:["Aucune, ce sont des synonymes","Git est un logiciel local, GitHub héberge le code en ligne","GitHub remplace Git","Git est payant, GitHub est gratuit"], correct:1},
     {q:"À quoi sert le fichier .gitignore ?", options:["À supprimer des fichiers du disque","À empêcher Git de suivre certains fichiers","À créer un commit automatique","À changer de branche"], correct:1},
-    {q:"Quelle commande envoie tes commits locaux vers GitHub ?", options:["git pull","git fetch","git push","git send"], correct:2}
+    {q:"Quelle commande envoie tes commits locaux vers GitHub ?", options:["git pull","git fetch","git push","git send"], correct:2},
+    {q:"Quelle commande télécharge une copie locale d'un dépôt GitHub existant ?", options:["git clone","git copy","git download","git fork"], correct:0}
   ]
 };
 
@@ -654,13 +697,29 @@ const WEB_M6 = {
         h3("Gérer les erreurs avec try / except") +
         code('python', 'try:\n    resultat = 10 / 0\nexcept ZeroDivisionError:\n    print("Impossible de diviser par zéro")') +
         callout('astuce',"Astuce","try/except évite qu'une erreur inattendue ne fasse planter tout le programme : on \"attrape\" l'erreur et on décide comment réagir.")
+    },
+    { id:'w6-8', title:"TP : Gestion simple d'employés",
+      body:
+        tp("Gestion simple d'employés", "Durée estimée : 30-45 min",
+          "manipuler listes, dictionnaires et fonctions pour traiter une petite liste d'employés.",
+          [
+            "Crée une liste de dictionnaires `employes`, chacun avec les clés `nom` et `salaire` (au moins 4 employés).",
+            "Écris une fonction `salaire_total(employes)` qui retourne la somme des salaires.",
+            "Écris une fonction `trier_par_salaire(employes)` qui retourne la liste triée par salaire décroissant.",
+            "Affiche chaque employé avec `print` au format : `Nom - Salaire FCFA`.",
+            "Bonus : affiche uniquement les employés dont le salaire dépasse 300000."
+          ],
+          "la liste des employés triée du plus gros au plus petit salaire, puis le salaire total affiché, puis la liste filtrée en bonus."
+        ) +
+        solution(code('python', 'employes = [\n    {"nom": "Alice", "salaire": 450000},\n    {"nom": "Bob", "salaire": 280000},\n    {"nom": "Chantal", "salaire": 520000},\n    {"nom": "David", "salaire": 310000},\n]\n\ndef salaire_total(employes):\n    return sum(e["salaire"] for e in employes)\n\ndef trier_par_salaire(employes):\n    return sorted(employes, key=lambda e: e["salaire"], reverse=True)\n\nfor e in trier_par_salaire(employes):\n    print(f"{e[\'nom\']} - {e[\'salaire\']} FCFA")\n\nprint(f"Salaire total : {salaire_total(employes)} FCFA")\n\n# Bonus\nfor e in employes:\n    if e["salaire"] > 300000:\n        print(e["nom"])'))
     }
   ],
   quiz:[
     {q:"Quel mot-clé Python définit une fonction ?", options:["function","def","func","def()"], correct:1},
     {q:"Quelle structure de données Python utilise des paires clé/valeur ?", options:["list","tuple","dict","set"], correct:2},
     {q:"Que fait __init__ dans une classe Python ?", options:["Il supprime l'objet","C'est le constructeur, exécuté à la création de l'objet","Il affiche l'objet","Il compare deux objets"], correct:1},
-    {q:"À quoi sert un bloc try/except ?", options:["À répéter du code","À gérer proprement les erreurs sans faire planter le programme","À définir une fonction","À importer un module"], correct:1}
+    {q:"À quoi sert un bloc try/except ?", options:["À répéter du code","À gérer proprement les erreurs sans faire planter le programme","À définir une fonction","À importer un module"], correct:1},
+    {q:"Quelle fonction retourne une nouvelle liste triée sans modifier l'originale ?", options:["liste.sort()","sorted(liste)","liste.order()","liste.arrange()"], correct:1}
   ]
 };
 
@@ -714,13 +773,33 @@ const WEB_M7 = {
         callout('cle',"À retenir","Un ModelForm génère automatiquement les champs du formulaire à partir du modèle, **et** revalide les données côté serveur — même si le JavaScript côté client a déjà vérifié, ne jamais faire confiance uniquement au navigateur.") +
         h3("Projet pratique") +
         p("À ce stade, tu peux construire un site de gestion complet (blog, école, petite entreprise) : modèles, vues, templates, formulaires et interface admin suffisent pour un vrai projet fonctionnel.")
+    },
+    { id:'w7-6', title:"TP : Vue liste des employés",
+      body:
+        tp("Vue liste des employés", "Durée estimée : 45-60 min",
+          "créer une application Django capable d'afficher la liste des employés depuis la base de données.",
+          [
+            "Crée un modèle `Employee` (nom, salaire, date_embauche) dans `models.py`.",
+            "Lance `python manage.py makemigrations` puis `python manage.py migrate`.",
+            "Ajoute 3 employés via l'interface admin (`python manage.py createsuperuser`).",
+            "Écris une vue `employee_list` qui récupère tous les employés avec `Employee.objects.all()`.",
+            "Retourne la liste au format texte avec `HttpResponse` (un employé par ligne).",
+            "Déclare l'URL `/employes/` dans `urls.py` pointant vers cette vue."
+          ],
+          "la page /employes/ affiche la liste des 3 employés créés, avec leur nom et salaire."
+        ) +
+        solution(
+          code('python', 'from django.http import HttpResponse\nfrom .models import Employee\n\ndef employee_list(request):\n    employees = Employee.objects.all()\n    lignes = [f"{e.nom} - {e.salaire} FCFA" for e in employees]\n    return HttpResponse("<br>".join(lignes))', "views.py") +
+          code('python', 'from django.urls import path\nfrom . import views\n\nurlpatterns = [\n    path("employes/", views.employee_list, name="employee_list"),\n]', "urls.py")
+        )
     }
   ],
   quiz:[
     {q:"Que signifie MTV dans l'architecture Django ?", options:["Model-Template-View","Main-Test-Verify","Multi-Thread-View","Model-Type-Validator"], correct:0},
     {q:"À quoi sert `python manage.py migrate` ?", options:["À lancer le serveur","À appliquer les changements de structure à la base de données","À créer un superutilisateur","À installer Django"], correct:1},
     {q:"Que fait `admin.site.register(Employee)` ?", options:["Il crée un nouvel employé","Il rend le modèle Employee gérable depuis l'interface d'administration","Il supprime le modèle","Il envoie un email"], correct:1},
-    {q:"Dans un template Django, comment afficher une variable ?", options:["<?= variable ?>","{{ variable }}","${variable}","#variable#"], correct:1}
+    {q:"Dans un template Django, comment afficher une variable ?", options:["<?= variable ?>","{{ variable }}","${variable}","#variable#"], correct:1},
+    {q:"Quelle commande crée le compte administrateur Django ?", options:["python manage.py createsuperuser","python manage.py createadmin","python manage.py admin","django-admin superuser"], correct:0}
   ]
 };
 
@@ -760,18 +839,107 @@ const WEB_M8 = {
         code('js', 'mongoose.connect("mongodb://localhost:27017/rh_benin");') +
         h3("Projet Node.js") +
         p("Avec ce que tu viens de voir (Express, routes, JSON), tu peux construire une API complète de gestion d'utilisateurs : lister, créer, modifier, supprimer.")
+    },
+    { id:'w8-4', title:"TP : Mini API Employés (Express)",
+      body:
+        tp("Mini API Employés (Express)", "Durée estimée : 45-60 min",
+          "créer une API REST avec Express pour gérer une liste d'employés en mémoire.",
+          [
+            "Initialise un projet avec `npm init -y` et installe `express`.",
+            "Crée un tableau `employes` en mémoire avec quelques employés (id, nom, salaire).",
+            "Crée une route `GET /api/employes` qui retourne la liste complète en JSON.",
+            "Crée une route `GET /api/employes/:id` qui retourne un employé précis.",
+            "Crée une route `POST /api/employes` qui ajoute un nouvel employé (via `express.json()`)."
+          ],
+          "avec un navigateur ou Postman, GET /api/employes renvoie un tableau JSON, et un POST avec un corps JSON ajoute un employé consultable ensuite."
+        ) +
+        solution(code('js', 'const express = require("express");\nconst app = express();\napp.use(express.json());\n\nlet employes = [\n  { id: 1, nom: "Alice", salaire: 450000 },\n  { id: 2, nom: "Bob", salaire: 300000 },\n];\n\napp.get("/api/employes", (req, res) => {\n  res.json(employes);\n});\n\napp.get("/api/employes/:id", (req, res) => {\n  const employe = employes.find(e => e.id === parseInt(req.params.id));\n  if (!employe) return res.status(404).json({ erreur: "Employé introuvable" });\n  res.json(employe);\n});\n\napp.post("/api/employes", (req, res) => {\n  const nouvel = { id: employes.length + 1, ...req.body };\n  employes.push(nouvel);\n  res.status(201).json(nouvel);\n});\n\napp.listen(3000, () => console.log("API sur port 3000"));'))
     }
   ],
   quiz:[
     {q:"Que permet Node.js de faire ?", options:["Exécuter du CSS côté serveur","Exécuter du JavaScript côté serveur","Compiler du Python","Remplacer HTML"], correct:1},
     {q:"À quoi sert npm ?", options:["À styliser une page","À gérer les modules/librairies d'un projet Node.js","À créer des bases de données","À remplacer Git"], correct:1},
     {q:"Quelle méthode HTTP utilise-t-on pour créer une nouvelle ressource ?", options:["GET","POST","DELETE","OPTIONS"], correct:1},
-    {q:"Quel framework simplifie la création de serveurs et de routes en Node.js ?", options:["Django","Express","Flask","React"], correct:1}
+    {q:"Quel framework simplifie la création de serveurs et de routes en Node.js ?", options:["Django","Express","Flask","React"], correct:1},
+    {q:"Quel module natif de Node.js permet de créer un serveur HTTP sans framework ?", options:["express","http","fs","path"], correct:1}
+  ]
+};
+
+const WEB_MSQL = {
+  id:'w-msql', title:'Module 9 · MySQL — Bases de données relationnelles', level:'Back-end',
+  chapters:[
+    { id:'wsql-1', title:"Comprendre les bases de données relationnelles", subtitle:"Pourquoi ranger des données dans des tables plutôt que dans un simple fichier texte.",
+      body:
+        p("Une **base de données relationnelle** range l'information dans des **tables**, un peu comme des feuilles de tableur reliées entre elles par des règles strictes. **MySQL** est l'un des systèmes de gestion de bases de données (SGBD) les plus utilisés au monde, notamment avec Django et Node.js.") +
+        table(["Terme","Signification"],[
+          ["**Table**","Une liste d'éléments du même type (ex : employes)"],
+          ["**Ligne (row)**","Un élément précis de la table (ex : un employé)"],
+          ["**Colonne**","Une information sur chaque élément (nom, salaire…)"],
+          ["**Clé primaire**","La colonne qui identifie chaque ligne de façon unique (souvent `id`)"],
+          ["**Clé étrangère**","Une colonne qui pointe vers la clé primaire d'une autre table, pour relier deux tables"]
+        ]) +
+        callout('analogie',"Analogie","Une base de données, c'est un classeur Excel avec plusieurs feuilles reliées entre elles : la feuille \"employés\" et la feuille \"contrats\" se référencent mutuellement grâce à un identifiant commun.")
+    },
+    { id:'wsql-2', title:"Créer une base et une table",
+      body:
+        code('sql', "CREATE DATABASE entreprise;\nUSE entreprise;\n\nCREATE TABLE employes (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  nom VARCHAR(50),\n  salaire DECIMAL(10,2),\n  date_embauche DATE\n);") +
+        h3("Les types de données courants") +
+        table(["Type","Utilisation"],[
+          ["**INT**","Un nombre entier (ex : un identifiant, un âge)"],
+          ["**DECIMAL(10,2)**","Un nombre décimal précis, idéal pour l'argent (ex : un salaire en FCFA)"],
+          ["**VARCHAR(n)**","Un texte court de longueur maximale n (ex : un nom)"],
+          ["**DATE**","Une date au format AAAA-MM-JJ"]
+        ]) +
+        callout('cle',"À retenir","**AUTO_INCREMENT** fait en sorte que MySQL attribue automatiquement un identifiant unique et croissant à chaque nouvelle ligne — inutile de le gérer soi-même.")
+    },
+    { id:'wsql-3', title:"Manipuler les données : SELECT, INSERT, UPDATE, DELETE", subtitle:"Les quatre opérations de base, aussi appelées CRUD (Create, Read, Update, Delete).",
+      body:
+        code('sql', "-- Ajouter une ligne\nINSERT INTO employes (nom, salaire, date_embauche) VALUES ('Alice', 450000, '2024-03-01');\n\n-- Lire toutes les lignes\nSELECT * FROM employes;\n\n-- Modifier une ligne\nUPDATE employes SET salaire = 480000 WHERE nom = 'Alice';\n\n-- Supprimer une ligne\nDELETE FROM employes WHERE nom = 'Alice';") +
+        table(["Opération CRUD","Instruction SQL"],[
+          ["**Create**","INSERT INTO"],
+          ["**Read**","SELECT"],
+          ["**Update**","UPDATE ... SET"],
+          ["**Delete**","DELETE FROM"]
+        ]) +
+        callout('attention',"Attention","Une commande `UPDATE` ou `DELETE` **sans clause WHERE** s'applique à toutes les lignes de la table — vérifie toujours ta condition avant d'exécuter, surtout en production.")
+    },
+    { id:'wsql-4', title:"Filtrer, trier et agréger les résultats",
+      body:
+        h3("Filtrer avec WHERE et LIKE") +
+        code('sql', "SELECT * FROM employes WHERE salaire > 400000;\nSELECT * FROM employes WHERE nom LIKE 'A%';") +
+        h3("Trier et limiter") +
+        code('sql', "SELECT * FROM employes ORDER BY salaire DESC LIMIT 3;") +
+        h3("Agréger avec les fonctions de calcul") +
+        code('sql', "SELECT AVG(salaire) AS salaire_moyen FROM employes;\nSELECT COUNT(*) AS nb_employes FROM employes;") +
+        p("**LIKE 'A%'** trouve les valeurs qui commencent par A. **ORDER BY ... DESC** trie du plus grand au plus petit. **LIMIT** restreint le nombre de résultats. **AVG**, **COUNT**, **SUM** calculent des statistiques sur une colonne entière.")
+    },
+    { id:'wsql-5', title:"TP : Requêtes sur la table employés",
+      body:
+        tp("Requêtes sur la table employés", "Durée estimée : 30-40 min",
+          "pratiquer les requêtes SQL essentielles (SELECT, WHERE, ORDER BY, UPDATE, DELETE) sur la table employes.",
+          [
+            "Insère au moins 5 employés dans la table `employes`.",
+            "Écris une requête qui calcule le salaire moyen (`AVG`).",
+            "Écris une requête qui affiche les 3 employés les mieux payés (`ORDER BY ... LIMIT`).",
+            "Écris une requête qui augmente de 10% le salaire de l'employé nommé \"Alice\" (`UPDATE`).",
+            "Écris une requête qui supprime les employés dont le salaire est inférieur à 200000 (`DELETE`)."
+          ],
+          "chaque requête s'exécute sans erreur et modifie/affiche les données comme attendu (vérifie avec `SELECT * FROM employes;` après chaque étape)."
+        ) +
+        solution(code('sql', "SELECT AVG(salaire) AS salaire_moyen FROM employes;\n\nSELECT * FROM employes ORDER BY salaire DESC LIMIT 3;\n\nUPDATE employes SET salaire = salaire * 1.10 WHERE nom = 'Alice';\n\nDELETE FROM employes WHERE salaire < 200000;"))
+    }
+  ],
+  quiz:[
+    {q:"Quelle instruction sélectionne toutes les colonnes d'une table ?", options:["SELECT ALL","SELECT *","GET *","FETCH *"], correct:1},
+    {q:"Quelle clause filtre les lignes retournées par une requête ?", options:["ORDER BY","WHERE","GROUP BY","LIMIT"], correct:1},
+    {q:"Quel type de données convient le mieux pour stocker un salaire précis ?", options:["INT","FLOAT","DECIMAL","VARCHAR"], correct:2},
+    {q:"Quel opérateur permet une recherche par motif (ex : commence par 'A') ?", options:["=","LIKE","IN","BETWEEN"], correct:1},
+    {q:"Que se passe-t-il si on exécute un DELETE FROM sans clause WHERE ?", options:["Rien ne se passe","Seule la première ligne est supprimée","Toutes les lignes de la table sont supprimées","Une erreur est automatiquement renvoyée"], correct:2}
   ]
 };
 
 const WEB_M9 = {
-  id:'w-m9', title:'Module 9 · Projet fil rouge — Le Logiciel RH du Bénin', level:'Projet complet',
+  id:'w-m9', title:'Module 10 · Projet fil rouge — Le Logiciel RH du Bénin', level:'Projet complet',
   chapters:[
     { id:'w9-1', title:"Le projet et son architecture globale", subtitle:"Un vrai cahier des charges : un logiciel de gestion RH pour une entreprise béninoise.",
       body:
@@ -870,13 +1038,36 @@ const WEB_M9 = {
           "Ajoute une recherche et un filtre sur la liste des employés"
         ]) +
         callout('cle',"Le mot de la fin","Tu es parti d'un `printf(\"Bonjour le monde\")` en C jusqu'à un vrai logiciel métier avec base de données, back-end et front-end connectés. C'est exactement le chemin d'un développeur web professionnel — continue de construire, un module à la fois.")
+    },
+    { id:'w9-7', title:"TP : Lancer le projet et afficher les employés", subtitle:"Le TP fil rouge : réaliser concrètement les étapes précédentes pour obtenir une application fonctionnelle.",
+      body:
+        tp("Lancer le projet et afficher les employés", "Durée estimée : 90-120 min (projet fil rouge)",
+          "réaliser concrètement les étapes vues dans ce module pour obtenir une application Django fonctionnelle avec au moins 3 employés visibles en ligne.",
+          [
+            "Crée un environnement virtuel, installe Django et lance `django-admin startproject rh_benin`.",
+            "Crée l'app `employees`, ajoute le modèle `Employee`, migre la base (`makemigrations` + `migrate`).",
+            "Crée un superutilisateur et ajoute 3 employés via l'admin.",
+            "Écris les vues `home`, `employee_list`, `employee_detail` et leurs templates/URLs.",
+            "Vérifie que la navigation entre la liste et le détail fonctionne."
+          ],
+          "python manage.py runserver démarre sans erreur, /admin permet de gérer les employés, et /employees/ affiche la liste des 3 employés créés."
+        ) +
+        solution(checklist([
+          "Serveur démarre sans erreur",
+          "Migrations appliquées sans erreur",
+          "Superutilisateur créé et connexion admin OK",
+          "3 employés visibles dans l'admin",
+          "Page /employees/ affiche la liste",
+          "Page détail accessible pour un employé"
+        ]))
     }
   ],
   quiz:[
     {q:"Dans le projet RH, quel rôle joue principalement Django ?", options:["Le design des pages uniquement","La logique métier centrale et la base de données","L'envoi des SMS uniquement","Le stockage des images"], correct:1},
     {q:"Dans le scénario \"calcul de la paie mensuelle\", qu'est-ce qui déclenche le processus le 1er du mois ?", options:["Un clic de l'utilisateur","Un CRON JOB (Node.js)","Une requête HTML","Le fichier .gitignore"], correct:1},
     {q:"Pourquoi documenter les taux CNSS/IRPP directement en commentaire dans le schéma SQL ?", options:["Ce n'est pas utile","Pour éviter des erreurs de calcul plus tard dans le projet","Pour ralentir la base de données","Pour remplacer Django"], correct:1},
-    {q:"Que fait get_object_or_404 dans la vue employee_detail ?", options:["Il crée un nouvel employé","Il récupère un employé ou affiche une erreur 404 s'il n'existe pas","Il supprime un employé","Il envoie un email"], correct:1}
+    {q:"Que fait get_object_or_404 dans la vue employee_detail ?", options:["Il crée un nouvel employé","Il récupère un employé ou affiche une erreur 404 s'il n'existe pas","Il supprime un employé","Il envoie un email"], correct:1},
+    {q:"Que faut-il faire dans settings.py juste après avoir créé une nouvelle app Django ?", options:["Rien, c'est automatique","L'ajouter dans INSTALLED_APPS","Supprimer INSTALLED_APPS","Modifier uniquement urls.py"], correct:1}
   ]
 };
 
@@ -884,9 +1075,9 @@ TRACKS.push({
   id:'web', color:'web', tag:'Parcours Développeur', shortLabel:'Développeur Web',
   label:'Développeur Web — Programmation, Web & Design',
   tagline:"HTML, CSS, JavaScript, Git, C, Python, Django et Node.js : le parcours complet pour devenir développeur, du premier \"Bonjour le monde\" à un vrai logiciel métier.",
-  description:"Le parcours phare de l'institut : Programmation Web, Développement mobile et Webdesign. Ce module numérique couvre en profondeur la Programmation Web (front-end, back-end, bases de données) à travers 10 modules progressifs, jusqu'à un projet complet — un logiciel de gestion RH pour une entreprise béninoise.",
+  description:"Le parcours phare de l'institut : Programmation Web, Développement mobile et Webdesign. Ce module numérique couvre en profondeur la Programmation Web (front-end, back-end, bases de données) à travers 11 modules progressifs, jusqu'à un projet complet — un logiciel de gestion RH pour une entreprise béninoise.",
   meta:["🗓️ <b>7 mois</b> de formation","💻 Programmation Web","📱 Développement mobile","🎨 Webdesign"],
-  modules:[WEB_M0, WEB_M1, WEB_M2, WEB_M3, WEB_M4, WEB_M5, WEB_M6, WEB_M7, WEB_M8, WEB_M9]
+  modules:[WEB_M0, WEB_M1, WEB_M2, WEB_M3, WEB_M4, WEB_M5, WEB_M6, WEB_M7, WEB_M8, WEB_MSQL, WEB_M9]
 });
 
 /* ================================================================
