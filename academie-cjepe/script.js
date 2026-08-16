@@ -177,9 +177,38 @@ const WEB_M0 = {
         callout('astuce',"Astuce",
           "Garde toujours ce trio de fichiers ensemble dans le même dossier pendant tes premiers projets. Une fois Git appris (module 4), tu sauras aussi versionner ce dossier proprement."
         )
+    },
+    { id:'w0-4', title:"TP : Décortiquer une URL et préparer son poste",
+      body:
+        tp("Décortiquer une URL et préparer son poste", "Durée estimée : 20-30 min",
+          "vérifier que tu sais identifier les parties d'une URL et que ton environnement de travail est prêt pour coder.",
+          [
+            "Prends l'URL `https://www.cjepe-benin.com/formations/cybersecurite` et identifie par écrit son protocole, son nom de domaine et son chemin.",
+            "Explique en une phrase, avec tes propres mots, la différence entre le client et le serveur.",
+            "Installe Visual Studio Code et l'extension Live Server si ce n'est pas déjà fait.",
+            "Crée un dossier `mon-site/` contenant trois fichiers vides : `index.html`, `style.css`, `script.js`.",
+            "Ouvre `index.html` avec Live Server et vérifie qu'une page blanche s'affiche bien dans le navigateur."
+          ],
+          "un dossier de projet propre avec les trois fichiers, ouvert avec succès dans le navigateur via Live Server, et une explication correcte de l'URL analysée."
+        ) +
+        solution(
+          p("**Analyse de l'URL :**") +
+          table(["Partie","Valeur"],[
+            ["Protocole","https://"],
+            ["Nom de domaine","www.cjepe-benin.com"],
+            ["Chemin","/formations/cybersecurite"]
+          ]) +
+          p("**Client / serveur :** le navigateur (client) envoie une requête à l'adresse demandée ; l'ordinateur qui héberge le site (serveur) répond en renvoyant les fichiers de la page.")
+        )
     }
   ]
 };
+WEB_M0.quiz = [
+  {q:"Dans le duo client / serveur, quel est le rôle du navigateur ?", options:["Il répond aux requêtes","Il demande une page web (c'est le client)","Il stocke le site en permanence","Il n'a aucun rôle"], correct:1},
+  {q:"Dans l'URL https://www.cjepe-benin.com/formations, que représente \"/formations\" ?", options:["Le protocole","Le nom de domaine","Le chemin vers une page précise du site","Le port réseau"], correct:2},
+  {q:"Pourquoi sépare-t-on toujours HTML, CSS et JavaScript dans des fichiers différents ?", options:["Ce n'est pas obligatoire mais c'est plus facile à lire et à corriger","Un navigateur ne peut pas lire deux fichiers","Ça rend le site plus lent","Ça n'a aucun intérêt"], correct:0},
+  {q:"À quoi sert l'extension Live Server dans VS Code ?", options:["À compiler du C","À ouvrir la page HTML dans le navigateur et la recharger automatiquement à chaque sauvegarde","À installer Git","À créer une base de données"], correct:1}
+];
 
 const WEB_M1 = {
   id:'w-m1', title:'Module 1 · HTML — Le squelette du Web', level:'Fondations',
@@ -275,6 +304,23 @@ const WEB_M1 = {
         h3("Les commentaires") +
         code('html', "<!-- Ceci est un commentaire -->") +
         p("Invisible pour le visiteur, utile pour toi ou tes collègues afin d'expliquer une partie du code.")
+    },
+    { id:'w1-7', title:"TP : Page de profil structurée",
+      body:
+        tp("Page de profil structurée", "Durée estimée : 45-60 min",
+          "construire une page HTML complète et sémantique en réutilisant tout ce qui a été vu dans ce module.",
+          [
+            "Crée un fichier `profil.html` avec l'ossature HTML minimale vue au chapitre 1.",
+            "Ajoute un `<header>` avec un `<h1>` (ton nom ou un nom fictif) et un court `<p>` de présentation.",
+            "Dans un `<main>`, ajoute une photo avec `<img>` (attribut `alt` obligatoire) et un `<h2>` \"Mes compétences\" suivi d'une liste `<ul>` d'au moins 3 éléments.",
+            "Ajoute un `<h2>` \"Mon expérience\" avec un `<table>` de 2 colonnes (Année / Ce que tu as fait) et au moins 2 lignes.",
+            "Ajoute un `<h2>` \"Me contacter\" avec un `<form>` contenant un champ `nom`, un champ `email` (avec `<label>` associé) et un bouton d'envoi.",
+            "Termine avec un `<footer>` contenant un lien `<a>` vers un site externe, ouvert dans un nouvel onglet."
+          ],
+          "une page HTML valide, ouverte sans erreur dans le navigateur, qui utilise header/main/footer, un h1 unique, une image avec alt, une liste, un tableau et un formulaire avec labels associés."
+        ) +
+        solution(code('html',
+'<!DOCTYPE html>\n<html lang="fr">\n<head>\n  <meta charset="UTF-8">\n  <title>Mon profil</title>\n</head>\n<body>\n  <header>\n    <h1>Awa Koffi</h1>\n    <p>Étudiante en développement web à Cotonou.</p>\n  </header>\n\n  <main>\n    <img src="photo.jpg" alt="Photo de profil d\'Awa Koffi">\n\n    <h2>Mes compétences</h2>\n    <ul>\n      <li>HTML &amp; CSS</li>\n      <li>JavaScript</li>\n      <li>Git &amp; GitHub</li>\n    </ul>\n\n    <h2>Mon expérience</h2>\n    <table>\n      <thead><tr><th>Année</th><th>Ce que j\'ai fait</th></tr></thead>\n      <tbody>\n        <tr><td>2025</td><td>Formation Développeur Web, CJEPE-BENIN</td></tr>\n        <tr><td>2026</td><td>Premier site vitrine déployé</td></tr>\n      </tbody>\n    </table>\n\n    <h2>Me contacter</h2>\n    <form>\n      <label for="nom">Nom</label>\n      <input type="text" id="nom" name="nom">\n      <label for="email">Email</label>\n      <input type="email" id="email" name="email">\n      <button type="submit">Envoyer</button>\n    </form>\n  </main>\n\n  <footer>\n    <a href="https://cjepe-benin.com" target="_blank">CJEPE-BENIN</a>\n  </footer>\n</body>\n</html>'))
     }
   ],
   quiz:[
@@ -349,6 +395,23 @@ const WEB_M2 = {
         h3("Effets et transitions") +
         code('css', "button:hover {\n  background: red;\n}\ntransition: all 0.3s ease;") +
         p("`:hover` cible un élément survolé par la souris. `transition` adoucit le changement (ici, sur 0.3 seconde) au lieu d'un changement brutal.")
+    },
+    { id:'w2-6', title:"TP : Styliser la page de profil",
+      body:
+        tp("Styliser la page de profil", "Durée estimée : 45-60 min",
+          "reprendre la page de profil du module HTML et la mettre en forme avec un fichier CSS externe, le box model, Flexbox et une media query.",
+          [
+            "Crée un fichier `style.css` et lie-le à `profil.html` avec une balise `<link>`.",
+            "Définis une couleur de fond pour le `<body>` et une police avec `font-family`.",
+            "Stylise le `<header>` : centre son contenu avec Flexbox (`display:flex; flex-direction:column; align-items:center;`) et ajoute un `padding`.",
+            "Donne à l'image de profil une largeur fixe, des coins arrondis (`border-radius`) et une `border`.",
+            "Ajoute un effet `:hover` avec une `transition` sur le bouton du formulaire.",
+            "Ajoute une media query `@media (max-width: 600px)` qui réduit le `font-size` du corps de page sur petit écran."
+          ],
+          "la page de profil du module précédent, désormais stylisée : header centré, image arrondie, bouton avec effet au survol, et un rendu qui reste lisible sur mobile."
+        ) +
+        solution(code('css',
+'body {\n  background-color: #f4f4f4;\n  font-family: Arial, sans-serif;\n  margin: 0;\n}\n\nheader {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding: 24px;\n  background-color: white;\n}\n\nheader img {\n  width: 120px;\n  border-radius: 50%;\n  border: 3px solid #333;\n}\n\nbutton {\n  background: #333;\n  color: white;\n  border: none;\n  padding: 10px 20px;\n  transition: all 0.3s ease;\n}\nbutton:hover {\n  background: #555;\n}\n\n@media (max-width: 600px) {\n  body { font-size: 14px; }\n}', "style.css"))
     }
   ],
   quiz:[
@@ -612,9 +675,21 @@ const WEB_M5 = {
         h3("Compiler et exécuter") +
         code('bash', "gcc main.c -o programme\n./programme")
     },
-    { id:'w5-5', title:"Mini-projet : gestion d'un employé", subtitle:"Pourquoi apprendre le C ?",
+    { id:'w5-5', title:"TP : Gestion d'un employé", subtitle:"Pourquoi apprendre le C ?",
       body:
-        code('c', '#include <stdio.h>\nint main() {\n  char nom[50];\n  float salaire;\n\n  scanf("%s", nom);\n  scanf("%f", &salaire);\n\n  printf("%s : %.2f FCFA", nom, salaire);\n  return 0;\n}') +
+        tp("Gestion d'un employé", "Durée estimée : 30-45 min",
+          "manipuler variables, structures et entrées/sorties pour construire un petit programme C autonome.",
+          [
+            "Crée un fichier `employe.c` et écris la structure minimale d'un programme C (`#include`, `main`, `return 0;`).",
+            "Déclare une `struct Employe` avec un nom (`char[50]`), un âge (`int`) et un salaire (`float`).",
+            "Dans `main`, déclare une variable de ce type et demande son nom, son âge et son salaire avec `scanf`.",
+            "Affiche un récapitulatif avec `printf`, au format : `Nom : ... | Âge : ... | Salaire : ... FCFA`.",
+            "Compile avec `gcc employe.c -o employe` puis exécute `./employe` pour vérifier le résultat."
+          ],
+          "le programme demande successivement le nom, l'âge et le salaire, puis affiche une ligne récapitulative correctement formatée dans le terminal."
+        ) +
+        solution(code('c',
+'#include <stdio.h>\n\nstruct Employe {\n  char nom[50];\n  int age;\n  float salaire;\n};\n\nint main() {\n  struct Employe e;\n\n  printf("Nom : ");\n  scanf("%s", e.nom);\n  printf("Age : ");\n  scanf("%d", &e.age);\n  printf("Salaire : ");\n  scanf("%f", &e.salaire);\n\n  printf("Nom : %s | Age : %d | Salaire : %.2f FCFA", e.nom, e.age, e.salaire);\n  return 0;\n}')) +
         h3("Pourquoi apprendre le C ?") +
         ul(["Comprendre la mémoire","Une base solide pour le génie logiciel","Une performance maximale","Indispensable pour : les systèmes, l'électronique, la cybersécurité"]) +
         callout('cle',"Résumé final", [
@@ -1072,12 +1147,21 @@ const WEB_M9 = {
 };
 
 TRACKS.push({
-  id:'web', color:'web', tag:'Parcours Développeur', shortLabel:'Développeur Web',
+  id:'web', uv:'UV1', color:'web', tag:'Parcours Développeur', shortLabel:'Développeur Web',
   label:'Développeur Web — Programmation, Web & Design',
   tagline:"HTML, CSS, JavaScript, Git, C, Python, Django et Node.js : le parcours complet pour devenir développeur, du premier \"Bonjour le monde\" à un vrai logiciel métier.",
   description:"Le parcours phare de l'institut : Programmation Web, Développement mobile et Webdesign. Ce module numérique couvre en profondeur la Programmation Web (front-end, back-end, bases de données) à travers 11 modules progressifs, jusqu'à un projet complet — un logiciel de gestion RH pour une entreprise béninoise.",
-  meta:["🗓️ <b>7 mois</b> de formation","💻 Programmation Web","📱 Développement mobile","🎨 Webdesign"],
-  modules:[WEB_M0, WEB_M1, WEB_M2, WEB_M3, WEB_M4, WEB_M5, WEB_M6, WEB_M7, WEB_M8, WEB_MSQL, WEB_M9]
+  meta:["🗓️ <b>67 séances de 2h</b> · 3 séances/semaine · ≈ 23 semaines","💻 Programmation Web","📱 Développement mobile","🎨 Webdesign"],
+  modules:[WEB_M0, WEB_M1, WEB_M2, WEB_M3, WEB_M4, WEB_M5, WEB_M6, WEB_M7, WEB_M8, WEB_MSQL, WEB_M9],
+  examFinal:[
+    {q:"Dans une requête web, quel est le rôle du serveur ?", options:["Il demande la page","Il répond en envoyant les fichiers de la page","Il affiche la page","Il n'a aucun rôle"], correct:1},
+    {q:"Quel attribut est obligatoire sur une balise <img> pour l'accessibilité ?", options:["src uniquement","alt","title","class"], correct:1},
+    {q:"Quelle propriété CSS aligne des éléments sur un seul axe (ligne ou colonne) ?", options:["position:absolute","display:flex","font-size","border-radius"], correct:1},
+    {q:"À quoi sert event.preventDefault() sur un formulaire JavaScript ?", options:["À vider le formulaire","À empêcher le rechargement automatique de la page à la soumission","À valider automatiquement les champs","À fermer la page"], correct:1},
+    {q:"Quelle commande envoie les changements locaux vers GitHub ?", options:["git pull","git push","git clone","git status"], correct:1},
+    {q:"Quel framework Python utilise l'architecture MTV (Modèle-Template-Vue) ?", options:["Node.js","Django","MySQL","VirtualBox"], correct:1},
+    {q:"Quelle commande SQL permet de récupérer des données d'une table ?", options:["INSERT", "SELECT", "DELETE", "UPDATE"], correct:1}
+  ]
 });
 
 /* ================================================================
@@ -1171,6 +1255,20 @@ const CY_M1 = {
         ul(["Supprime les données inutiles (moins de données = moins de risques)","Chiffre les données sensibles avant stockage cloud","Classe tes fichiers pour retrouver rapidement l'important"]) +
         h3("Checklist mensuelle") +
         checklist(["Vérifier que les sauvegardes fonctionnent","Mettre à jour tous les logiciels","Changer les mots de passe des comptes critiques","Supprimer les fichiers temporaires et caches","Vérifier les permissions des applications"])
+    },
+    { id:'cy1-6', title:"TP : Classer ses propres données et auditer sa sauvegarde",
+      body:
+        tp("Classer ses propres données et auditer sa sauvegarde", "Durée estimée : 25-35 min",
+          "appliquer la classification par sensibilité et la règle 3-2-1 à des données réelles.",
+          [
+            "Liste 6 types de données que tu utilises réellement (photos, documents administratifs, mots de passe, messages, notes de cours, données bancaires...).",
+            "Classe chacune dans une des 4 catégories du cours : publiques, internes, confidentielles, critiques.",
+            "Pour chaque donnée classée \"confidentielle\" ou \"critique\", note son niveau de protection actuel (aucune protection, mot de passe, chiffrement...).",
+            "Vérifie combien de copies existent de tes données les plus importantes, et sur combien de supports différents.",
+            "Rédige 3 actions concrètes à mettre en place pour te rapprocher de la règle 3-2-1."
+          ],
+          "un tableau à 2 colonnes (Donnée → Catégorie) et une liste de 3 actions correctives concrètes pour améliorer tes sauvegardes."
+        )
     }
   ],
   quiz:[
@@ -1327,6 +1425,23 @@ CY_M2.chapters.push(
       callout('astuce',"Conseil débutant","Commence par bien configurer ta box actuelle avant d'investir dans du matériel dédié : pour un usage familial classique, c'est largement suffisant.")
   }
 );
+CY_M2.chapters.push(
+  { id:'cy2-7', title:"TP : Audit de sa box et de son réseau domestique",
+    body:
+      tp("Audit de sa box et de son réseau domestique", "Durée estimée : 30-40 min",
+        "vérifier et corriger la configuration de sécurité de ta box Internet en appliquant la checklist du module.",
+        [
+          "Connecte-toi à l'interface d'administration de ta box (généralement 192.168.1.1) et vérifie que le mot de passe admin n'est pas celui par défaut.",
+          "Vérifie le protocole WiFi utilisé (WPA2 ou WPA3) dans les paramètres sans-fil ; note-le.",
+          "Vérifie si un réseau \"Invités\" existe ; si non, indique comment tu le créerais.",
+          "Exécute `ipconfig` (Windows) ou `ifconfig` / `ip a` (Mac/Linux) pour relever ton IP privée.",
+          "Va sur \"mon-ip.com\" pour relever ton IP publique et note la différence entre les deux.",
+          "Rédige une liste de 3 réglages à corriger en priorité sur ta box, s'il y en a."
+        ],
+        "un mini rapport avec : le protocole WiFi utilisé, ton IP privée et ton IP publique relevées, et une liste priorisée d'au moins 1 à 3 actions correctives (ou la confirmation que la box est déjà bien configurée)."
+      )
+  }
+);
 CY_M2.quiz = [
   {q:"Que signifie WPA3 par rapport au WiFi ?", options:["Le nom du routeur","Un protocole de sécurisation du WiFi, à privilégier (jamais WEP)","Un antivirus","Un type de câble réseau"], correct:1},
   {q:"Quelle est la différence entre IP publique et IP privée ?", options:["Aucune différence","L'IP publique est visible depuis Internet, l'IP privée reste dans le réseau local","L'IP privée change tout le temps","L'IP publique ne sert à rien"], correct:1},
@@ -1442,6 +1557,19 @@ const CY_M3 = {
         p("Tu reçois un email de **support@netfIix-secure.com** (remarque le \"I\" majuscule à la place du \"l\"), objet \"Action requise : mise à jour de votre moyen de paiement\", te pressant de cliquer avant 24h.") +
         ul(["**Premier indice de phishing ?** → Le domaine est suspect (netfIix-secure.com ≠ netflix.com)","**Que faire ?** → Ne pas cliquer, aller directement sur netflix.com via ton navigateur","**Que signaler ?** → L'email comme phishing à ton fournisseur de messagerie"]) +
         callout('astuce',"Bon réflexe","Toujours taper l'URL toi-même plutôt que de cliquer sur un lien reçu par email.")
+    },
+    { id:'cy3-5', title:"TP : Identifier une menace et reconstituer une attaque",
+      body:
+        tp("Identifier une menace et reconstituer une attaque", "Durée estimée : 30-40 min",
+          "s'entraîner à reconnaître un type de malware et à reconstituer les étapes d'une attaque à partir d'un scénario.",
+          [
+            "Un ami te dit : \"Depuis hier, mon PC est très lent, l'antivirus s'est désactivé tout seul et des fenêtres de pub s'ouvrent même quand le navigateur est fermé.\" Identifie, parmi les 8 familles de malwares du cours, celle(s) qui correspond(ent) le mieux à ces symptômes, en justifiant ton choix.",
+            "Un collègue reçoit un email \"venant\" de son directeur, demandant en urgence un virement, un vendredi à 18h. Nomme le piège psychologique utilisé et le réflexe à adopter.",
+            "Reconstitue, dans l'ordre, les 7 étapes du cycle de vie d'une cyberattaque en imaginant un scénario complet (repérage → actions sur objectifs) sur un exemple de ton choix.",
+            "Pour chacune des 7 étapes de ton scénario, indique un point de rupture concret qui aurait pu stopper l'attaque."
+          ],
+          "un document avec : le malware identifié et justifié, le piège psychologique nommé, un scénario d'attaque en 7 étapes cohérent, et une action de défense associée à chaque étape."
+        )
     }
   ],
   quiz:[
@@ -1578,6 +1706,21 @@ const CY_M4 = {
         ]) +
         h3("Organiser sa veille") +
         ul(["Un agrégateur de flux RSS (Feedly) avec un dossier \"Cybersécurité\"","Des alertes Google sur des mots-clés précis","Un espace de notes (Notion, Obsidian) pour se constituer une base de connaissances","20 minutes chaque vendredi, et une action concrète notée pour la semaine suivante"])
+    },
+    { id:'cy4-6', title:"TP : Ta routine de sécurité personnelle",
+      body:
+        tp("Ta routine de sécurité personnelle", "Durée estimée : 30-40 min",
+          "mettre en place concrètement les défenses de base vues dans ce module, sur tes propres comptes.",
+          [
+            "Choisis 3 comptes importants (email principal, banque, réseau social) et vérifie si la 2FA est activée ; active-la sur au moins 1 compte si ce n'est pas déjà fait.",
+            "Crée un mot de passe fort avec la méthode de la phrase de passe pour un de ces comptes, en suivant l'exemple du cours.",
+            "Installe (ou vérifie que tu as déjà) un gestionnaire de mots de passe parmi ceux cités dans le cours.",
+            "Vérifie une de tes adresses email sur HaveIBeenPwned.com et note le résultat.",
+            "Construis ta routine hebdomadaire personnelle en choisissant une action de la table \"Routine hebdomadaire\" pour chaque jour de la semaine.",
+            "Inscris-toi à au moins une source de veille passive citée dans le cours (newsletter ANSSI, CERT-FR...)."
+          ],
+          "un compte protégé par la 2FA en plus qu'au début du TP, un mot de passe fort créé selon la méthode enseignée, le résultat de la vérification HaveIBeenPwned, et ta routine hebdomadaire personnelle écrite jour par jour."
+        )
     }
   ],
   quiz:[
@@ -1620,16 +1763,30 @@ const CY_M5 = {
         ul(["**Cours en ligne** : OpenClassrooms \"Sécurisez votre vie numérique\", guides pratiques ANSSI","**Lectures** : \"La cybersécurité pour les Nuls\", guide ANSSI \"Les 12 règles d'or\"","**Outils à tester** : Bitwarden, Malwarebytes Free, HaveIBeenPwned, DuckDuckGo"]) +
         callout('astuce',"Le mot de la fin","Tu n'es plus un \"débutant complet\" : tu es un utilisateur averti. Continue à apprendre, à partager, à protéger — la cybersécurité est un processus, pas un produit.")
     }
+  ],
+  quiz:[
+    {q:"Quelle action fait partie du Mois 1 de la feuille de route ?", options:["Installer un gestionnaire de mots de passe et changer les mots de passe critiques","Apprendre le chiffrement avancé","Créer une entreprise de cybersécurité","Aucune action n'est nécessaire au début"], correct:0},
+    {q:"Selon la conclusion du cours, quel est l'objectif réaliste de la cybersécurité personnelle ?", options:["Atteindre une protection absolue et invulnérable","Rendre l'attaque plus difficile, plus longue et plus coûteuse pour l'attaquant","Ne plus jamais utiliser Internet","Confier entièrement sa sécurité à un antivirus"], correct:1},
+    {q:"Que recommande le cours de faire au Mois 3, en plus de sa propre sécurité ?", options:["Rien de plus n'est nécessaire","Partager ses connaissances et contribuer à la communauté","Arrêter la veille de sécurité","Supprimer tous ses comptes en ligne"], correct:1},
+    {q:"La cybersécurité, telle que présentée dans ce cours, est avant tout :", options:["Une affaire réservée aux experts en informatique","Un processus continu fait de petites habitudes régulières","Un produit qu'on achète une seule fois","Une contrainte sans réel bénéfice"], correct:1}
   ]
 };
 
 TRACKS.push({
-  id:'cyber', color:'cyber', tag:'Parcours Sécurité', shortLabel:'Cybersécurité',
+  id:'cyber', uv:'UV2', color:'cyber', tag:'Parcours Sécurité', shortLabel:'Cybersécurité',
   label:'Cybersécurité — Se protéger dans le monde numérique',
   tagline:"Un cours complet et pédagogique, pensé pour les débutants complets : aucun prérequis technique n'est nécessaire.",
   description:"20 chapitres regroupés en 5 modules progressifs : des fondamentaux (données, risques) à la défense au quotidien (mots de passe, checklist, veille), en passant par la sécurisation du réseau et la compréhension des menaces (malwares, ingénierie sociale, anatomie d'une attaque).",
-  meta:["🛡️ Pour tout niveau","🎯 Aucun prérequis technique","📅 Feuille de route sur 3 mois"],
-  modules:[CY_M0, CY_M1, CY_M2, CY_M3, CY_M4, CY_M5]
+  meta:["🛡️ Pour tout niveau","🎯 Aucun prérequis technique","📅 <b>26 séances de 2h</b> · 3 séances/semaine · ≈ 9 semaines"],
+  modules:[CY_M0, CY_M1, CY_M2, CY_M3, CY_M4, CY_M5],
+  examFinal:[
+    {q:"Que signifie le \"C\" du triangle CIA en cybersécurité ?", options:["Confidentialité","Chiffrement","Cybersécurité","Contrôle"], correct:0},
+    {q:"Quelle est la règle de sauvegarde recommandée ?", options:["1 copie sur 1 support","La règle 3-2-1 (3 copies, 2 supports, 1 hors site)","Aucune sauvegarde n'est nécessaire","Une sauvegarde annuelle suffit"], correct:1},
+    {q:"Quel type de malware chiffre tes fichiers et réclame une rançon ?", options:["Spyware","Ransomware","Adware","Keylogger"], correct:1},
+    {q:"Quelle méthode de création de mot de passe est recommandée dans ce cours ?", options:["Un mot simple suivi d'un chiffre","La phrase de passe (plusieurs mots aléatoires assemblés)","Le nom de son animal","La même date partout"], correct:1},
+    {q:"Que combine l'authentification à deux facteurs (2FA) ?", options:["Deux mots de passe identiques","Ce que tu sais (mot de passe) et ce que tu possèdes (téléphone, clé)","Deux comptes email","Deux antivirus"], correct:1},
+    {q:"Quel protocole WiFi faut-il privilégier, en évitant WEP ?", options:["WPA3","Bluetooth","HTTP","FTP"], correct:0}
+  ]
 });
 
 /* ================================================================
@@ -1665,6 +1822,20 @@ const LAB_M1 = {
           ["**Snapshot**","Une photo de l'état de la VM, pour revenir en arrière"]
         ]) +
         callout('cle',"Résumé ultra simple","VirtualBox = un logiciel gratuit qui transforme ton PC en plusieurs PC virtuels. Idéal pour apprendre, tester, et sécuriser tes expérimentations sans jamais casser ton vrai système.")
+    },
+    { id:'lab1-2', title:"TP : Planifier ta première machine virtuelle",
+      body:
+        tp("Planifier ta première machine virtuelle", "Durée estimée : 15-20 min",
+          "préparer sur le papier les choix techniques d'une VM avant de l'installer réellement au module suivant.",
+          [
+            "Télécharge et installe VirtualBox depuis virtualbox.org si ce n'est pas déjà fait.",
+            "Vérifie la RAM totale de ton PC (Paramètres système) et note-la.",
+            "En respectant la règle \"ne pas dépasser la moitié de la RAM réelle\", calcule combien de Mo tu peux allouer à une future VM.",
+            "Dans le vocabulaire du cours, associe chaque terme (Machine virtuelle, ISO, VDI, Snapshot) à sa définition, sans regarder le cours.",
+            "Note pourquoi un Snapshot pris juste après l'installation d'un système est une bonne pratique avant de commencer à expérimenter."
+          ],
+          "VirtualBox installé et lancé, la quantité de RAM allouable calculée, et le vocabulaire de base correctement associé à ses définitions."
+        )
     }
   ],
   quiz:[
@@ -1698,6 +1869,22 @@ const LAB_M2 = {
         h4("Étape 10 — Premier démarrage") +
         p("Ta VM Kali démarre avec l'écran de connexion. Connecte-toi avec le nom d'utilisateur `kali` et le mot de passe que tu as défini.") +
         callout('astuce',"Bravo","Tu viens d'installer un système d'exploitation complet, isolé, sans aucun risque pour ton PC principal — exactement comme le font les professionnels de la cybersécurité pour s'entraîner.")
+    },
+    { id:'lab2-2', title:"TP : Installer Kali Linux de bout en bout",
+      body:
+        tp("Installer Kali Linux de bout en bout", "Durée estimée : 60-90 min (dont temps de téléchargement)",
+          "réaliser une installation complète et fonctionnelle de Kali Linux dans VirtualBox, en suivant les 10 étapes du cours.",
+          [
+            "Télécharge l'ISO Kali Linux 64-bit Installer depuis le site officiel.",
+            "Crée la machine virtuelle dans VirtualBox (Nom : Kali Linux, Type : Linux, Version : Debian 64-bit).",
+            "Alloue 2048 ou 4096 Mo de RAM, sans dépasser la moitié de ta RAM réelle.",
+            "Crée un disque dur virtuel VDI, dynamiquement alloué, d'au moins 30 Go.",
+            "Branche l'ISO téléchargée dans la configuration Stockage de la VM.",
+            "Lance l'installation graphique et va jusqu'au premier écran de connexion.",
+            "Connecte-toi avec ton utilisateur `kali` et prends une capture d'écran de l'écran d'accueil réussi."
+          ],
+          "une VM Kali Linux fonctionnelle, visible dans VirtualBox, sur laquelle tu peux te connecter avec succès — avec une capture d'écran de l'écran de connexion comme preuve de réussite."
+        )
     }
   ],
   quiz:[
@@ -1774,6 +1961,21 @@ const LAB_M3 = {
         p("Puis dans VirtualBox : **Configuration → Dossiers partagés → Ajouter un dossier Windows**, en cochant **Montage automatique** et **Permanent**. Le dossier apparaît ensuite dans Kali sous `/media/sf_nomdudossier`. Si l'accès est refusé :") +
         code('bash', "sudo usermod -aG vboxsf kali\nreboot") +
         callout('cle',"Résumé rapide",["Commandes Linux = base de Kali","Internet = mode NAT dans VirtualBox","Capture = PrtSc ou menu VirtualBox","Partage = Guest Additions obligatoires"])
+    },
+    { id:'lab3-3', title:"TP : Prendre en main le terminal Kali",
+      body:
+        tp("Prendre en main le terminal Kali", "Durée estimée : 25-35 min",
+          "s'entraîner sur les commandes essentielles de navigation, de gestion de fichiers et de réseau dans Kali.",
+          [
+            "Ouvre un terminal dans Kali et affiche le dossier courant avec `pwd`.",
+            "Crée un dossier `tp_kali`, entre dedans avec `cd`, puis crée un fichier vide `notes.txt` (`touch notes.txt`).",
+            "Liste le contenu du dossier avec `ls -la` et vérifie que le fichier apparaît.",
+            "Affiche ton adresse IP avec `ip a`, puis teste ta connexion Internet avec `ping google.com` (arrête avec Ctrl+C).",
+            "Mets à jour la liste des paquets avec `sudo apt update`.",
+            "Configure le réseau de la VM en mode NAT si ce n'est pas déjà fait, et prends une capture d'écran du terminal montrant le résultat de `ip a` et `ping`."
+          ],
+          "un dossier `tp_kali` créé avec un fichier dedans, une adresse IP affichée, une réponse positive au ping vers google.com, et une capture d'écran du terminal comme preuve."
+        )
     }
   ],
   quiz:[
@@ -1817,6 +2019,21 @@ const LAB_M4 = {
         h3("Les compétences d'un bon hacker éthique") +
         ul(["Réseaux (IP, ports, DNS)","Linux","Web (HTML, HTTP)","Bases de données","Programmation — Python conseillé"]) +
         callout('cle',"Résumé simple","Le hacking éthique, c'est trouver les failles **avant** les criminels, pour protéger les systèmes — jamais pour nuire.")
+    },
+    { id:'lab4-2', title:"TP : Planifier un test d'intrusion légal",
+      body:
+        tp("Planifier un test d'intrusion légal", "Durée estimée : 25-35 min",
+          "rédiger un plan de pentest structuré en 5 étapes, sur une cible d'entraînement légale.",
+          [
+            "Crée un compte gratuit sur TryHackMe ou choisis une machine sur VulnHub.",
+            "Choisis une machine d'entraînement pour débutant et note son nom.",
+            "Pour l'étape \"Reconnaissance\", liste les informations que tu chercherais à collecter en premier.",
+            "Pour l'étape \"Scan\", indique la commande `nmap` que tu utiliserais pour découvrir les ports ouverts.",
+            "Pour l'étape \"Analyse des vulnérabilités\", liste 2 outils du cours que tu utiliserais et pourquoi.",
+            "Rédige le plan des étapes \"Exploitation\" et \"Rapport\" sans les exécuter, en expliquant ce que chacune devrait produire comme résultat."
+          ],
+          "un document en 5 parties (une par étape du pentest) décrivant précisément ce que tu ferais, sur quelle cible légale, avec quels outils — sans avoir besoin d'exécuter réellement l'attaque à ce stade."
+        )
     }
   ],
   quiz:[
@@ -1855,6 +2072,21 @@ const LAB_M5 = {
           ["Bruteforce","Tester la robustesse d'un mot de passe","Hydra"]
         ]) +
         callout('cle',"Rappel final","Tout ceci n'est légal que sur ton labo personnel ou des plateformes d'entraînement dédiées. C'est exactement la même logique que le module Cybersécurité : comprendre l'attaque pour mieux savoir s'en défendre.")
+    },
+    { id:'lab5-2', title:"TP : Ton premier rapport de pentest",
+      body:
+        tp("Ton premier rapport de pentest", "Durée estimée : 60-90 min",
+          "exécuter les 4 actions du labo guidé sur Metasploitable et rédiger un mini rapport professionnel, comme à la dernière étape du hacking éthique.",
+          [
+            "Installe Metasploitable comme deuxième VM, sur le même réseau interne que Kali.",
+            "Exploite la faille vsftpd avec Metasploit et confirme l'accès avec `whoami`.",
+            "Scanne le site web de Metasploitable avec Nikto et note au moins 2 résultats intéressants.",
+            "Capture quelques paquets réseau avec Wireshark pendant un `ping` entre les deux machines.",
+            "Teste Hydra sur le service SSH avec la wordlist fournie et note le résultat (réussite ou non).",
+            "Rédige un mini rapport d'une demi-page : faille trouvée, méthode utilisée, risque, et recommandation de correction — comme le prévoit l'étape \"Rapport\" du module précédent."
+          ],
+          "un accès obtenu sur Metasploitable via l'exploit vsftpd, des résultats Nikto et Wireshark notés, et un mini rapport écrit reprenant faille / méthode / risque / recommandation."
+        )
     }
   ],
   quiz:[
@@ -1866,12 +2098,19 @@ const LAB_M5 = {
 };
 
 TRACKS.push({
-  id:'lab', color:'lab', tag:'Parcours Pratique', shortLabel:'Labo VirtualBox / Kali',
+  id:'lab', uv:'UV3', color:'lab', tag:'Parcours Pratique', shortLabel:'Labo VirtualBox / Kali',
   label:'Labo pratique — VirtualBox & Kali Linux',
   tagline:"Monte ton propre laboratoire de cybersécurité, 100% isolé et légal, pour t'entraîner au hacking éthique sans aucun risque.",
   description:"De l'installation de VirtualBox jusqu'à ton premier test d'intrusion sur une machine volontairement vulnérable : virtualisation, prise en main de Kali Linux, fondamentaux du hacking éthique et labo pratique guidé (Metasploit, Nikto, Wireshark, Hydra).",
-  meta:["🖥️ Environnement 100% isolé","⚖️ Cadre légal et éthique","🎓 Complément pratique du parcours Cybersécurité"],
-  modules:[LAB_M1, LAB_M2, LAB_M3, LAB_M4, LAB_M5]
+  meta:["🖥️ Environnement 100% isolé","⚖️ Cadre légal et éthique","📅 <b>11 séances de 2h</b> · 3 séances/semaine · ≈ 4 semaines"],
+  modules:[LAB_M1, LAB_M2, LAB_M3, LAB_M4, LAB_M5],
+  examFinal:[
+    {q:"Qu'est-ce qu'un Snapshot dans VirtualBox ?", options:["Un antivirus","Une photo de l'état de la VM, pour revenir en arrière","Un fichier ISO","Une carte réseau"], correct:1},
+    {q:"Quel mode réseau VirtualBox est recommandé pour donner Internet à Kali simplement ?", options:["Bridge","NAT","Interne uniquement","Aucun"], correct:1},
+    {q:"Quelle est la règle n°1 absolue du hacking éthique ?", options:["Toujours utiliser Kali Linux","Ne jamais tester un système sans autorisation écrite","Toujours travailler seul","Ne jamais utiliser Metasploit"], correct:1},
+    {q:"Qu'est-ce que Metasploitable ?", options:["Un vrai site d'entreprise","Une machine volontairement vulnérable, conçue pour l'entraînement légal","Un antivirus","Un navigateur"], correct:1},
+    {q:"Quel outil sert à scanner les ports ouverts d'une machine ?", options:["nmap","Word","Excel","VLC"], correct:0}
+  ]
 });
 
 /* ================================================================
@@ -1952,6 +2191,22 @@ const DS_M1 = {
           ["**Alignement**","Tout ce qui n'est pas aligné intentionnellement paraît être une erreur"]
         ]) +
         callout('astuce',"Astuce","Active toujours une grille ou des repères d'alignement dans ton outil de design (ou les outils développeur du navigateur) : l'œil humain détecte un décalage de 1 à 2 pixels, même sans savoir l'expliquer.")
+    },
+    { id:'ds1-4', title:"TP : Construire tes tokens visuels",
+      body:
+        tp("Construire tes tokens visuels", "Durée estimée : 30-40 min",
+          "définir une palette de couleurs, une échelle typographique et un système d'espacement cohérents, sous forme de variables CSS réutilisables.",
+          [
+            "Choisis une couleur primaire au format `hsl()` et vérifie son contraste avec du blanc et du noir sur WebAIM Contrast Checker.",
+            "Définis 2 couleurs sémantiques (succès, erreur) distinctes de ta couleur primaire.",
+            "Construis une échelle typographique de 4 tailles (`--text-sm` à `--text-2xl`) en `rem`, avec un ratio constant.",
+            "Construis une échelle d'espacement en base 8 avec au moins 5 valeurs (`--space-1` à `--space-5`).",
+            "Regroupe toutes ces variables dans un bloc `:root { }` unique, prêt à être réutilisé dans un projet."
+          ],
+          "un fichier ou bloc CSS `:root` contenant au moins 3 couleurs, 4 tailles de texte et 5 valeurs d'espacement, toutes nommées clairement et conformes aux ratios de contraste WCAG AA."
+        ) +
+        solution(code('css',
+':root {\n  /* Couleurs */\n  --color-primary: hsl(210, 55%, 22%);\n  --color-success: hsl(140, 50%, 35%);\n  --color-danger: hsl(0, 60%, 45%);\n\n  /* Typographie */\n  --text-sm: 0.875rem;\n  --text-base: 1rem;\n  --text-lg: 1.25rem;\n  --text-2xl: 1.953rem;\n\n  /* Espacement (base 8) */\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 16px;\n  --space-4: 24px;\n  --space-5: 32px;\n}', "tokens.css"))
     }
   ],
   quiz:[
@@ -2004,6 +2259,20 @@ const DS_M2 = {
           "Une action destructive (supprimer) doit toujours être confirmée"
         ]) +
         callout('astuce',"Astuce","Ces principes sont les mêmes que ceux que tu retrouveras dans le module Accessibilité (module 5) : une interface pensée pour être utilisable rapidement par tous est presque toujours plus accessible aussi.")
+    },
+    { id:'ds2-4', title:"TP : Persona et parcours utilisateur",
+      body:
+        tp("Persona et parcours utilisateur", "Durée estimée : 30-40 min",
+          "rédiger un persona réaliste et son parcours utilisateur pour un produit de ton choix, en appliquant les principes d'utilisabilité du module.",
+          [
+            "Choisis un produit simple (une appli de covoiturage local, une plateforme d'inscription à une formation...).",
+            "Rédige un persona complet sur le modèle du cours : âge, objectif, contrainte, niveau technique.",
+            "Liste, étape par étape, le parcours utilisateur menant à l'objectif principal du persona (5 à 7 étapes).",
+            "Pour 2 étapes de ce parcours, identifie quelle loi de la Gestalt ou principe d'utilisabilité (Fitts, Hick, Jakob) s'applique et comment.",
+            "Indique, pour l'étape la plus critique du parcours, quel feedback visuel confirmerait à l'utilisateur que son action a réussi."
+          ],
+          "un persona rédigé, un parcours utilisateur en 5 à 7 étapes numérotées, et au moins 2 principes d'utilisabilité explicitement reliés à des étapes précises du parcours."
+        )
     }
   ],
   quiz:[
@@ -2063,6 +2332,22 @@ const DS_M3 = {
         ]) +
         callout('cle',"Le pont avec le développement","Cette méthode correspond exactement à l'approche par **composants** que tu utiliseras en React, Vue ou même en HTML/CSS réutilisable : un `<Button>` est un atome, un `<SearchBar>` une molécule, un `<Header>` un organisme. Penser en Atomic Design côté design facilite énormément le découpage en composants côté code.") +
         callout('astuce',"Astuce","Quand une maquette Figma est organisée en composants (atomes, molécules...), le passage au code est direct : chaque composant Figma devient un composant de code. Quand elle ne l'est pas, c'est souvent le signe d'un design encore à clarifier.")
+    },
+    { id:'ds3-4', title:"TP : Coder une grille responsive mobile-first",
+      body:
+        tp("Coder une grille responsive mobile-first", "Durée estimée : 30-40 min",
+          "construire une mise en page en grille CSS de 12 colonnes, mobile-first, avec 3 cartes de contenu.",
+          [
+            "Crée un fichier HTML avec un conteneur `.grid` contenant 3 `<div class=\"carte\">`.",
+            "En CSS, commence par la version mobile : chaque carte occupe 100% de la largeur (`grid-column: span 12`).",
+            "Ajoute une media query `@media (min-width: 768px)` où les cartes passent à `grid-column: span 4` (3 cartes sur une ligne).",
+            "Assure-toi que chaque carte a un padding et une taille de zone cliquable (si elle contient un bouton) d'au moins 44×44px.",
+            "Identifie, dans ta grille, à quel niveau de l'Atomic Design correspond une \"carte\" (atome, molécule ou organisme) et justifie ta réponse."
+          ],
+          "une page qui affiche les 3 cartes empilées sur mobile, et alignées sur une seule ligne à partir de 768px de large, avec le niveau Atomic Design de la carte correctement identifié."
+        ) +
+        solution(code('css',
+'.grid {\n  display: grid;\n  grid-template-columns: repeat(12, 1fr);\n  gap: 16px;\n}\n\n.carte {\n  grid-column: span 12;\n  padding: 16px;\n  border-radius: 8px;\n  background: #f4f4f4;\n}\n\n@media (min-width: 768px) {\n  .carte { grid-column: span 4; }\n}', "style.css"))
     }
   ],
   quiz:[
@@ -2186,7 +2471,18 @@ const DS_M4 = {
           "Un prototype cliquable existe au moins pour le parcours principal",
           "Les icônes sont prêtes à exporter en SVG"
         ]) +
-        callout('cle',"À retenir","Une bonne maquette n'est pas seulement \"jolie\" : elle est **organisée** comme le sera le code qui en découle. C'est cette organisation, plus que le talent artistique, qui fait gagner du temps à toute l'équipe.")
+        callout('cle',"À retenir","Une bonne maquette n'est pas seulement \"jolie\" : elle est **organisée** comme le sera le code qui en découle. C'est cette organisation, plus que le talent artistique, qui fait gagner du temps à toute l'équipe.") +
+        tp("Livrer un composant bouton complet", "Durée estimée : 30-40 min",
+          "aller au bout de l'exercice guidé ci-dessus en livrant un composant bouton documenté, prêt à être transmis à un développeur.",
+          [
+            "Termine l'exercice guidé \"construire un bouton de A à Z\" jusqu'à l'étape du composant avec variantes.",
+            "Ajoute une 3ᵉ variante \"petit / grand\" en plus de \"hover\" et \"disabled\".",
+            "Nomme le composant et ses calques clairement (\"Bouton / Primaire / Grand\"), pas \"Rectangle 234\".",
+            "Ouvre le mode Dev sur ta variante par défaut et relève les valeurs CSS générées (couleur, padding, radius).",
+            "Vérifie ta maquette avec la checklist \"avant de transmettre à un développeur\" vue plus haut, et corrige ce qui manque."
+          ],
+          "un composant Figma \"Bouton\" avec au moins 3 variantes nommées clairement, dont les valeurs CSS ont été relevées via le mode Dev, et qui passe la checklist de transmission au développeur."
+        )
     }
   ],
   quiz:[
@@ -2249,6 +2545,20 @@ const DS_M5 = {
           "Utilise un simulateur de daltonisme (disponible dans les outils développeur de Chrome/Firefox) sur ta palette"
         ]) +
         callout('cle',"À retenir","Une interface accessible n'est pas une interface \"en plus\" pour une minorité : c'est une interface plus claire, plus prévisible et plus robuste pour absolument tout le monde.")
+    },
+    { id:'ds5-4', title:"TP : Documenter un composant et l'auditer",
+      body:
+        tp("Documenter un composant et l'auditer", "Durée estimée : 30-40 min",
+          "documenter les 6 états d'un composant de formulaire et vérifier son accessibilité selon les critères du module.",
+          [
+            "Choisis un composant de formulaire (champ texte, case à cocher, ou bouton).",
+            "Décris, pour chacun des 6 états du cours (par défaut, hover, focus, actif, disabled, erreur), à quoi il ressemble visuellement.",
+            "Vérifie que l'état \"erreur\" ne repose pas uniquement sur la couleur rouge : ajoute un texte ou une icône.",
+            "Teste ce composant au clavier uniquement (Tab, Entrée) et note si l'état focus est clairement visible.",
+            "Convertis les valeurs de ce composant (couleurs, espacement) en design tokens nommés, réutilisables ailleurs dans le projet."
+          ],
+          "un tableau des 6 états du composant décrits, la confirmation que l'erreur est perceptible sans la couleur seule, le résultat du test clavier, et la liste des design tokens utilisés."
+        )
     }
   ],
   quiz:[
@@ -2291,7 +2601,19 @@ const DS_M6 = {
           "La page reste claire sans aucune couleur (test en niveaux de gris)",
           "Un seul message principal ressort clairement de la page"
         ]) +
-        callout('astuce',"Pour aller plus loin","Reprends ce mini-projet et connecte le formulaire de contact au back-end Django vu dans le parcours Développeur Web (module 7) : tu boucles alors tout le cycle — design, code front-end, et traitement des données côté serveur.")
+        callout('astuce',"Pour aller plus loin","Reprends ce mini-projet et connecte le formulaire de contact au back-end Django vu dans le parcours Développeur Web (module 7) : tu boucles alors tout le cycle — design, code front-end, et traitement des données côté serveur.") +
+        tp("Livrer la landing page de l'Institut", "Durée estimée : 90-120 min (projet de synthèse)",
+          "livrer une landing page complète, du wireframe au code, en appliquant l'ensemble des méthodes vues dans le parcours Webdesign.",
+          [
+            "Rédige le persona et l'objectif principal de la page (étape 1).",
+            "Dessine le wireframe mobile-first sans couleur ni police définitive (étape 2).",
+            "Définis tes tokens (couleur primaire, accent, échelle typographique, espacement en base 8) (étape 3).",
+            "Construis la maquette Figma en composants avec Auto Layout (étape 4).",
+            "Code la page en HTML sémantique et CSS avec variables, Flexbox/Grid et une media query desktop (étape 5).",
+            "Valide ta page avec la checklist de l'étape 6 : contraste, zones cliquables ≥44×44px, navigation clavier, test en niveaux de gris."
+          ],
+          "une page HTML/CSS fonctionnelle, fidèle à la maquette Figma, qui passe les 5 points de la checklist de vérification finale du module."
+        )
     }
   ],
   quiz:[
@@ -2302,12 +2624,19 @@ const DS_M6 = {
 };
 
 TRACKS.push({
-  id:'design', color:'design', tag:'Parcours Design', shortLabel:'Webdesign',
+  id:'design', uv:'UV4', color:'design', tag:'Parcours Design', shortLabel:'Webdesign',
   label:'Webdesign — Concevoir des interfaces, pour développeurs',
   tagline:"Les fondamentaux du design d'interface pensés pour un développeur : comprendre, discuter et traduire une maquette en code, sans devenir graphiste.",
   description:"Couleur, typographie, UX, grilles responsives, Figma en mode développeur, design systems et accessibilité — jusqu'à un projet complet, du wireframe à la page en ligne, qui réutilise directement les acquis HTML/CSS du parcours Développeur Web.",
-  meta:["🎨 Pensé pour développeurs","🧩 Relié au parcours Développeur Web","🧪 Se termine par un projet complet"],
-  modules:[DS_M0, DS_M1, DS_M2, DS_M3, DS_M4, DS_M5, DS_M6]
+  meta:["🎨 Pensé pour développeurs","📅 <b>23 séances de 2h</b> · 3 séances/semaine · ≈ 8 semaines","🧪 Se termine par un projet complet"],
+  modules:[DS_M0, DS_M1, DS_M2, DS_M3, DS_M4, DS_M5, DS_M6],
+  examFinal:[
+    {q:"Selon les normes WCAG AA, quel est le ratio de contraste minimum pour du texte normal ?", options:["1.5 : 1", "3 : 1", "4.5 : 1", "10 : 1"], correct:2},
+    {q:"Que signifie concevoir \"mobile-first\" ?", options:["Ne concevoir que pour mobile", "Concevoir d'abord pour le plus petit écran, puis enrichir pour les écrans plus grands", "Utiliser uniquement des media queries max-width", "Interdire l'usage sur ordinateur"], correct:1},
+    {q:"À quel concept CSS l'Auto Layout de Figma correspond-il le plus directement ?", options:["Grid", "Flexbox", "Position absolute", "Media queries"], correct:1},
+    {q:"Qu'est-ce qu'un design token ?", options:["Un mot de passe Figma", "Une valeur de design nommée et réutilisable, partagée entre design et code", "Un composant React uniquement", "Un plugin Figma payant"], correct:1},
+    {q:"Quelle taille minimale recommandée pour une cible tactile sur mobile ?", options:["10×10px", "24×24px", "44×44px", "100×100px"], correct:2}
+  ]
 });
 
 /* ---------- État & routage ---------- */
@@ -2363,7 +2692,7 @@ function renderTabs(){
   el.innerHTML = TRACKS.map(t=>{
     const active = State.trackId===t.id ? 'active':'';
     return '<button class="track-tab '+active+'" onclick="setHash(\''+t.id+'\')">'+
-      '<span class="dot" style="background:var(--'+t.color+')"></span>'+t.shortLabel+'</button>';
+      '<span class="dot" style="background:var(--'+t.color+')"></span>'+t.uv+' · '+t.shortLabel+'</button>';
   }).join('');
 }
 
@@ -2375,7 +2704,7 @@ function renderSidebar(){
   const t = getTrack(State.trackId);
   const prog = trackProgress(t);
   let html = '<div class="side-track-title"><span class="swatch" style="background:var(--'+t.color+')"></span>'+
-    '<h2>'+t.shortLabel+'</h2><span class="progress-pill">'+prog.done+'/'+prog.total+'</span></div>';
+    '<h2>'+t.uv+' · '+t.shortLabel+'</h2><span class="progress-pill">'+prog.done+'/'+prog.total+'</span></div>';
   t.modules.forEach((m,mi)=>{
     const open = State.openModules.has(m.id) || State.moduleId===m.id;
     const mp = moduleProgress(t,m);
@@ -2406,15 +2735,15 @@ function toggleMobileSidebar(){
 function viewHome(){
   let html = '<div class="hero-banner"><div class="hero-eyebrow">Institut de Formation Professionnelle</div>'+
     '<h1>Bienvenue à l’Académie CJEPE-BENIN</h1>'+
-    '<p>Trois parcours numériques, pensés pour un débutant complet : Développeur Web, Cybersécurité et Labo pratique (VirtualBox &amp; Kali Linux). Choisis un parcours pour commencer, ton avancement est sauvegardé automatiquement sur cet appareil.</p>'+
+    '<p>Quatre parcours numériques regroupés en 4 Unités de Valeur (UV), pensés pour un débutant complet : Développeur Web, Cybersécurité, Labo pratique (VirtualBox &amp; Kali Linux) et Webdesign. Chaque parcours se suit à raison de <b>3 séances de 2h par semaine</b>, une séance correspondant à une leçon. Choisis un parcours pour commencer, ton avancement est sauvegardé automatiquement sur cet appareil.</p>'+
     '<div class="hero-meta"><span>📍 <b>Cotonou</b></span><span>☎ <b>+229 01 40 32 10 84</b></span><span>🕘 <b>Cours en journée, soirée et en ligne</b></span></div>'+
     '</div>';
   html += '<div class="track-grid">';
   TRACKS.forEach(t=>{
     const prog = trackProgress(t);
     html += '<div class="track-card" onclick="setHash(\''+t.id+'\')"><div class="bar" style="background:var(--'+t.color+')"></div>'+
-      '<span class="badge badge-'+t.id+'">'+t.tag+'</span><h3>'+esc(t.label)+'</h3><p>'+esc(t.tagline)+'</p>'+
-      '<div class="stat">'+t.modules.length+' modules · '+totalChapterCount(t)+' leçons'+(prog.done? ' · '+prog.pct+'% complété':'')+'</div></div>';
+      '<span class="badge badge-'+t.id+'">'+t.uv+' · '+t.tag+'</span><h3>'+esc(t.label)+'</h3><p>'+esc(t.tagline)+'</p>'+
+      '<div class="stat">'+t.modules.length+' modules · '+totalChapterCount(t)+' séances de 2h'+(prog.done? ' · '+prog.pct+'% complété':'')+'</div></div>';
   });
   html += '</div>';
   document.getElementById('contentInner').innerHTML = html;
@@ -2424,7 +2753,7 @@ function viewHome(){
 function viewTrack(t){
   const prog = trackProgress(t);
   let html = '<div class="crumbs"><a href="#">Accueil</a><span>/</span><span>'+esc(t.label)+'</span></div>';
-  html += '<div class="hero-banner"><div class="hero-eyebrow">'+esc(t.tag)+'</div><h1>'+esc(t.label)+'</h1>'+
+  html += '<div class="hero-banner"><div class="hero-eyebrow">'+esc(t.uv)+' · '+esc(t.tag)+'</div><h1>'+esc(t.label)+'</h1>'+
     '<p>'+esc(t.description)+'</p>'+
     '<div class="hero-meta">'+t.meta.map(x=>'<span>'+x+'</span>').join('')+
     '<span>📈 <b>'+prog.pct+'%</b> complété ('+prog.done+'/'+prog.total+')</span></div></div>';
@@ -2434,12 +2763,150 @@ function viewTrack(t){
     const firstChap = m.chapters[0];
     html += '<div class="module-card" onclick="setHash(\''+t.id+'/'+m.id+'/'+firstChap.id+'\')">'+
       '<div class="mnum">'+(mi+1)+'</div><div class="mbody"><h4>'+esc(m.title)+'</h4>'+
-      '<div class="msub">'+m.chapters.length+' leçons'+(m.level?' · '+esc(m.level):'')+'</div></div>'+
+      '<div class="msub">'+m.chapters.length+' séance'+(m.chapters.length>1?'s':'')+' de 2h'+(m.level?' · '+esc(m.level):'')+'</div></div>'+
       '<div class="mprog">'+mp.done+'/'+mp.total+'<div class="bartrack"><div class="barfill" style="width:'+mp.pct+'%;background:var(--'+t.color+')"></div></div></div>'+
       '</div>';
   });
   html += '</div>';
+  html += progressGateHTML(t, prog);
   document.getElementById('contentInner').innerHTML = html;
+}
+
+/* ---------- Examen final & Certification ---------- */
+const EXAM_PASS_RATIO = 0.8;
+function examKey(tid){ return 'cjepe_exam_'+tid; }
+function isExamPassed(tid){ return localStorage.getItem(examKey(tid))==='passed'; }
+function markExamPassed(tid){ localStorage.setItem(examKey(tid),'passed'); }
+
+function progressGateHTML(t, prog){
+  if(prog.pct < 100){
+    const restant = prog.total - prog.done;
+    return '<div class="cert-box locked"><h3>🔒 Étape 1 · Terminer le parcours</h3>'+
+      '<p>Termine les '+restant+' séance'+(restant>1?'s':'')+' restante'+(restant>1?'s':'')+' du parcours « '+esc(t.label)+' » pour débloquer l\'examen final.</p></div>';
+  }
+  if(t.examFinal && t.examFinal.length && !isExamPassed(t.id)){
+    return examFinalHTML(t);
+  }
+  return certFormHTML(t, prog);
+}
+
+function examFinalHTML(t){
+  const qs = t.examFinal||[];
+  const passThreshold = Math.ceil(qs.length*EXAM_PASS_RATIO);
+  let html = '<div class="cert-box exam-box" id="examBox_'+t.id+'"><h3>📝 Étape 2 · Examen final de l\'UV</h3>'+
+    '<p>Réponds aux '+qs.length+' questions de synthèse du parcours « '+esc(t.label)+' ». Un score d\'au moins <b>'+passThreshold+'/'+qs.length+'</b> ('+Math.round(EXAM_PASS_RATIO*100)+'%) est requis pour débloquer ton attestation nominative. Tu peux réessayer autant de fois que nécessaire.</p>';
+  qs.forEach((q,qi)=>{
+    html += '<div class="qitem" data-qi="'+qi+'"><p class="qtext">'+(qi+1)+'. '+esc(q.q)+'</p><div class="qopts">';
+    q.options.forEach((o,oi)=>{
+      html += '<label class="qopt" data-oi="'+oi+'" onclick="examAnswer(this,'+qi+','+oi+','+q.correct+')"><input type="radio" name="exam'+t.id+'_'+qi+'" /> '+esc(o)+'</label>';
+    });
+    html += '</div></div>';
+  });
+  html += '<div class="exam-result" id="examResult_'+t.id+'"></div>'+
+    '<button class="btn" onclick="examSubmit(\''+t.id+'\')">Valider mon examen</button>'+
+    '</div>';
+  return html;
+}
+function examAnswer(el,qi,oi,correctIdx){
+  const group = el.closest('.qitem').querySelectorAll('.qopt');
+  group.forEach(g=>{g.classList.remove('correct','wrong'); g.querySelector('input').checked=false;});
+  el.querySelector('input').checked = true;
+  el.classList.add(oi===correctIdx ? 'correct' : 'wrong');
+}
+function examSubmit(tid){
+  const t = getTrack(tid);
+  const box = document.getElementById('examBox_'+tid);
+  const items = box.querySelectorAll('.qitem');
+  const resEl = document.getElementById('examResult_'+tid);
+  let answered=0, correct=0;
+  items.forEach(it=>{
+    const chosen = it.querySelector('.qopt input:checked');
+    if(chosen){ answered++; if(chosen.closest('.qopt').classList.contains('correct')) correct++; }
+  });
+  const total = items.length;
+  if(answered < total){
+    resEl.textContent = 'Réponds à toutes les questions avant de valider ('+answered+'/'+total+').';
+    resEl.className = 'exam-result warn';
+    return;
+  }
+  const passThreshold = Math.ceil(total*EXAM_PASS_RATIO);
+  if(correct >= passThreshold){
+    markExamPassed(tid);
+    resEl.textContent = 'Score : '+correct+'/'+total+' — Examen validé ! 🎉';
+    resEl.className = 'exam-result ok';
+    setTimeout(()=>{ viewTrack(t); }, 900);
+  } else {
+    resEl.textContent = 'Score : '+correct+'/'+total+' — insuffisant (minimum '+passThreshold+'/'+total+'). Corrige les réponses en rouge ci-dessus puis réessaie.';
+    resEl.className = 'exam-result warn';
+  }
+}
+function certFormHTML(t, prog){
+  return '<div class="cert-box"><h3>🎓 Étape 3 · Attestation de fin de parcours</h3>'+
+    '<p>Félicitations, tu as terminé les '+prog.total+' séances et validé l\'examen final du parcours « '+esc(t.label)+' ». Saisis tes nom et prénom(s) pour générer ton attestation nominative, prête à imprimer ou enregistrer en PDF.</p>'+
+    '<div class="cert-form">'+
+      '<div class="cert-field"><label for="certPrenom_'+t.id+'">Prénom(s)</label><input type="text" id="certPrenom_'+t.id+'" placeholder="ex : Awa Épiphanie" autocomplete="given-name"></div>'+
+      '<div class="cert-field"><label for="certNom_'+t.id+'">Nom de famille</label><input type="text" id="certNom_'+t.id+'" placeholder="ex : Koffi" autocomplete="family-name"></div>'+
+      '<button class="btn" onclick="certGenerate(\''+t.id+'\')">Générer mon attestation</button>'+
+    '</div>'+
+    '<div class="cert-error" id="certError_'+t.id+'">Merci de renseigner ton prénom et ton nom pour générer l\'attestation.</div>'+
+    '</div>';
+}
+function capitalizeWords(s){
+  return s.trim().split(/\s+/).map(w=>w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' ');
+}
+function ensureCertOverlay(){
+  let ov = document.getElementById('certOverlay');
+  if(!ov){
+    ov = document.createElement('div');
+    ov.id = 'certOverlay';
+    ov.className = 'cert-overlay';
+    ov.innerHTML = '<button class="cert-close" onclick="closeCertOverlay()" aria-label="Fermer">×</button><div id="certContent"></div>';
+    document.body.appendChild(ov);
+  }
+  return ov;
+}
+function closeCertOverlay(){
+  const ov = document.getElementById('certOverlay');
+  if(ov) ov.classList.remove('show');
+}
+function certGenerate(trackId){
+  const t = getTrack(trackId);
+  const prog0 = trackProgress(t);
+  if(prog0.pct < 100 || (t.examFinal && t.examFinal.length && !isExamPassed(trackId))) return;
+  const prenomEl = document.getElementById('certPrenom_'+trackId);
+  const nomEl = document.getElementById('certNom_'+trackId);
+  const errEl = document.getElementById('certError_'+trackId);
+  const prenom = (prenomEl.value||'').trim();
+  const nom = (nomEl.value||'').trim();
+  if(!prenom || !nom){
+    if(errEl) errEl.classList.add('show');
+    return;
+  }
+  if(errEl) errEl.classList.remove('show');
+
+  const prog = trackProgress(t);
+  const fullPrenom = capitalizeWords(prenom);
+  const fullNom = nom.trim().toUpperCase();
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('fr-FR', {year:'numeric',month:'long',day:'numeric'});
+  const serial = 'CJEPE-'+t.id.toUpperCase()+'-'+today.getFullYear()+String(today.getMonth()+1).padStart(2,'0')+String(today.getDate()).padStart(2,'0')+'-'+Math.floor(1000+Math.random()*9000);
+  const heures = prog.total*2;
+
+  const html =
+    '<div class="certificate">'+
+      '<div class="cert-seal">Institut de Formation Professionnelle · CJEPE-BENIN · Cotonou</div>'+
+      '<h2>Attestation de formation</h2>'+
+      '<p class="cert-intro">Le présent certificat est décerné à</p>'+
+      '<span class="cert-name">'+esc(fullPrenom)+' '+esc(fullNom)+'</span>'+
+      '<p class="cert-body">Pour avoir suivi avec succès le parcours <strong>'+esc(t.label)+'</strong> ('+esc(t.uv)+'), soit '+prog.total+' séances de 2 heures ('+heures+' heures de formation), dispensé par l\'Académie CJEPE-BENIN, validé par la complétion de l\'ensemble des modules, travaux pratiques et évaluations, ainsi que par la réussite de l\'examen final de l\'unité de valeur.</p>'+
+      '<div class="cert-meta-row"><span>Date de délivrance : '+dateStr+'</span><span>N° de certificat : '+serial+'</span></div>'+
+      '<div class="cert-sig"><div class="line">Direction de la formation</div>Institut de Formation Professionnelle, CJEPE-BENIN</div>'+
+      '<div class="cert-actions"><button class="btn" onclick="window.print()">🖨 Imprimer / enregistrer en PDF</button></div>'+
+    '</div>';
+
+  const ov = ensureCertOverlay();
+  document.getElementById('certContent').innerHTML = html;
+  ov.classList.add('show');
 }
 
 /* ---------- Vue: chapitre ---------- */
@@ -2451,7 +2918,7 @@ function viewChapter(t,m,c){
   const done = isDone(t.id,m.id,c.id);
 
   let html = '<div class="crumbs"><a href="#">Accueil</a><span>/</span><a href="#/'+t.id+'">'+esc(t.label)+'</a><span>/</span><span>'+esc(m.title)+'</span></div>';
-  html += '<div class="chapter-head"><span class="badge badge-'+t.id+'">'+esc(m.title)+'</span><h1>'+esc(c.title)+'</h1>';
+  html += '<div class="chapter-head"><span class="badge badge-'+t.id+'">'+esc(t.uv)+' · '+esc(m.title)+'</span><h1>'+esc(c.title)+'</h1>';
   if(c.subtitle) html += '<p class="chapter-sub">'+esc(c.subtitle)+'</p>';
   html += '</div>';
   html += '<div class="prose">'+c.body+'</div>';
